@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
 import fetchLocations from '../services/apiFetch'
 
 export default function Test() {
@@ -9,6 +10,7 @@ export default function Test() {
 
   if (error) return 'An error has occurred: ' + error.message
 
+  console.log(data)
   return (
     <div>
       <input value={searchInput} onChange={handleOnChange} />
@@ -17,7 +19,18 @@ export default function Test() {
         .flat()
         .filter((location) => location.description.includes(searchInput))
         .map((location) => (
-          <p key={location.description}>{location.Locations[0].name}</p>
+          <section key={location.description}>
+            <p>{location.Locations[0].name}</p>
+            <p>iot.id: {location['@iot.id']}</p>
+            <Link
+              to={{
+                pathname: `/thing/${location['@iot.id']}`,
+                state: { stationName: location.description },
+              }}
+            >
+              About
+            </Link>
+          </section>
         ))}
     </div>
   )

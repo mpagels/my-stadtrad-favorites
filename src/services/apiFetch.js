@@ -18,3 +18,9 @@ export default function fetchLocations() {
     )
   })
 }
+
+export function fetchThing(id) {
+  return fetch(`https://iot.hamburg.de/v1.0/Things(${id})/Datastreams`).then(
+    (response) => response.json()
+  )
+}
