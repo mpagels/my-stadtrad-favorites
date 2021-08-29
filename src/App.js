@@ -1,19 +1,14 @@
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query'
+import FooterNavBar from './components/FooterNavBar'
+import Header from './components/Header'
 import Stadtrad from './components/Stadtrad'
-
-const queryClient = new QueryClient()
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
+      <Header />
       <Stadtrad />
-    </QueryClientProvider>
+      <FooterNavBar />
+    </>
   )
 }
 
