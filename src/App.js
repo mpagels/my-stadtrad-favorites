@@ -1,5 +1,20 @@
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
+import Stadtrad from './components/Stadtrad'
+
+const queryClient = new QueryClient()
+
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Stadtrad />
+    </QueryClientProvider>
+  )
 }
 
-export default App;
+export default App
