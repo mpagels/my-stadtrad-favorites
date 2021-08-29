@@ -9,9 +9,14 @@ body {
     margin: 0;
     font-size: 112.5%;
     font-family: "Montserrat", sans-serif;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
+#root {
+    display: grid;
+    grid-template-rows: 75px auto 75px;
+    height: 100vh;
+}
 :root {
     --main-brand-background: #008c9e;
     --primary-brand-highlight: #fdc851;
