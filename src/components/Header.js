@@ -8,4 +8,5 @@ export default function Header() {
 const HeaderWrapper = styled.header`
   display: flex;
   justify-content: center;
+  align-items: center;
 `
