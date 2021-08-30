@@ -15,13 +15,13 @@ export default function Test() {
     <div>
       <input value={searchInput} onChange={handleOnChange} />
       {data
-        .map((test) => test.value)
-        .flat()
-        .filter((location) => location.description.includes(searchInput))
+        .filter((location) =>
+          location.station_description.includes(searchInput)
+        )
         .map((location) => (
-          <section key={location.description}>
-            <p>{location.Locations[0].name}</p>
-            <p>iot.id: {location['@iot.id']}</p>
+          <section key={location.station_description}>
+            <p>{location.station_description}</p>
+            <p>iot.id: {location.thing_id}</p>
             <Link
               to={{
                 pathname: `/thing/${location['@iot.id']}`,
