@@ -1,12 +1,14 @@
 import React from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { useQuery } from 'react-query'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams, useHistory } from 'react-router-dom'
 import { fetchThing } from '../services/apiFetch'
 
 export default function Thing() {
   const { id } = useParams()
   const location = useLocation()
+  const history = useHistory()
+
   const { isLoading, error, data } = useQuery('fetchThing', () =>
     fetchThing(id)
   )
@@ -33,7 +35,16 @@ export default function Thing() {
         <Marker position={[cordinates[1], cordinates[0]]}>
           <Popup>Stadtrad-Station</Popup>
         </Marker>
+        <ChangeMapView coords={[cordinates[1], cordinates[0]]} />
       </MapContainer>
+      <button onClick={() => history.goBack()}>Zurück</button>
     </div>
   )
+}
+
+function ChangeMapView({ coords }) {
+  const map = useMap()
+  map.setView(coords, map.getZoom())
+
+  return null
 }
