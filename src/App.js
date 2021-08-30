@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom'
+import styled from 'styled-components'
 import FooterNavBar from './components/FooterNavBar'
 import Header from './components/Header'
 // eslint-disable-next-line no-unused-vars
@@ -11,18 +12,23 @@ function App() {
     <>
       <Header />
       {/* <Stadtrad /> */}
-
-      <Switch>
-        <Route path="/thing/:id">
-          <Thing />
-        </Route>
-        <Route path="/">
-          <Test />
-        </Route>
-      </Switch>
+      <Main>
+        <Switch>
+          <Route path="/thing/:id">
+            <Thing />
+          </Route>
+          <Route path="/">
+            <Test />
+          </Route>
+        </Switch>
+      </Main>
       <FooterNavBar />
     </>
   )
 }
 
 export default App
+
+const Main = styled.main`
+  overflow-y: scroll;
+`
