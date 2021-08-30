@@ -4,7 +4,7 @@ import FooterNavBar from './components/FooterNavBar'
 import Header from './components/Header'
 // eslint-disable-next-line no-unused-vars
 import Stadtrad from './components/Stadtrad'
-import Test from './components/Test'
+import SearchStations from './pages/SearchStations'
 import Thing from './pages/Thing'
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
             <Thing />
           </Route>
           <Route path="/">
-            <Test />
+            <SearchStations />
           </Route>
         </Switch>
       </Main>
