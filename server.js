@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 5000
 const fetch = require('node-fetch')
+const cors = require('cors')
+
+app.use(cors())
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
 
@@ -33,4 +36,11 @@ app.get('/api/get-location', async (req, res) => {
   })
 
   res.status(200).json(response)
+})
+
+app.get('/api/get-thing/:id', async (req, res) => {
+  console.log('drin')
+  const { id } = req.params
+  console.log('id', id)
+  res.end()
 })
