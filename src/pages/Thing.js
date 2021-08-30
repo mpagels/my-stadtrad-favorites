@@ -18,7 +18,13 @@ export default function Thing() {
   if (error) return 'An error has occurred: ' + error.message
   console.log(data)
   console.log(location)
-  const { station_description, dataStream_id, coordinates } = data
+  const {
+    station_description,
+    dataStream_id,
+    coordinates,
+    availableBikes,
+    lastUpdated,
+  } = data
   return (
     <div>
       <h2>{station_description}</h2>
@@ -37,6 +43,10 @@ export default function Thing() {
         </Marker>
         <ChangeMapView coords={[coordinates[0], coordinates[1]]} />
       </MapContainer>
+      <section>
+        <p>Verfügbare Fahrräder: {availableBikes}</p>
+        <p>Zuletzt geupdated: {lastUpdated}</p>
+      </section>
       <button onClick={() => history.goBack()}>Zurück</button>
     </div>
   )
