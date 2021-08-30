@@ -18,20 +18,22 @@ export default function Test() {
         .filter((location) =>
           location.station_description.includes(searchInput)
         )
-        .map((location) => (
-          <section key={location.station_description}>
-            <p>{location.station_description}</p>
-            <p>iot.id: {location.thing_id}</p>
-            <Link
-              to={{
-                pathname: `/thing/${location['@iot.id']}`,
-                state: { stationName: location.description },
-              }}
-            >
-              About
-            </Link>
-          </section>
-        ))}
+        .map((location) => {
+          const { station_description, thing_id } = location
+          return (
+            <section key={station_description}>
+              <p>{station_description}</p>
+              <p>iot.id: {thing_id}</p>
+              <Link
+                to={{
+                  pathname: `/thing/${thing_id}`,
+                }}
+              >
+                About
+              </Link>
+            </section>
+          )
+        })}
     </div>
   )
 
