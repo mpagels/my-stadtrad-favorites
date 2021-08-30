@@ -39,8 +39,21 @@ app.get('/api/get-location', async (req, res) => {
 })
 
 app.get('/api/get-thing/:id', async (req, res) => {
-  console.log('drin')
   const { id } = req.params
-  console.log('id', id)
-  res.end()
+
+  const thing = await fetch(
+    `https://iot.hamburg.de/v1.0/Things(${id})/Datastreams`
+  ).then((res) => res.json())
+
+  const getThingName = await fetch(
+    thing.value[0]['Thing@iot.navigationLink']
+  ).then((res) => res.json())
+
+  const [lat, long] = thing.value[0].observedArea.coordinates[1]
+  const response = {
+    station_description: getThingName.description,
+    coordinates: [long, lat],
+    dataStream_id: thing.value[0]['@iot.id'],
+  }
+  res.status(200).json(response)
 })

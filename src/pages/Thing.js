@@ -18,13 +18,13 @@ export default function Thing() {
   if (error) return 'An error has occurred: ' + error.message
   console.log(data)
   console.log(location)
-  const cordinates = data.value[0].observedArea.coordinates[1]
+  const { station_description, dataStream_id, coordinates } = data
   return (
     <div>
-      <h2>{location.state.stationName}</h2>
+      <h2>{station_description}</h2>
 
       <MapContainer
-        center={[cordinates[1], cordinates[0]]}
+        center={[coordinates[0], coordinates[1]]}
         zoom={18}
         scrollWheelZoom={true}
       >
@@ -32,10 +32,10 @@ export default function Thing() {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[cordinates[1], cordinates[0]]}>
+        <Marker position={[coordinates[0], coordinates[1]]}>
           <Popup>Stadtrad-Station</Popup>
         </Marker>
-        <ChangeMapView coords={[cordinates[1], cordinates[0]]} />
+        <ChangeMapView coords={[coordinates[0], coordinates[1]]} />
       </MapContainer>
       <button onClick={() => history.goBack()}>Zurück</button>
     </div>
