@@ -3,6 +3,7 @@ const app = express()
 const port = process.env.PORT || 5000
 const fetch = require('node-fetch')
 const cors = require('cors')
+var dayjs = require('dayjs')
 
 app.use(cors())
 
@@ -45,15 +46,29 @@ app.get('/api/get-thing/:id', async (req, res) => {
     `https://iot.hamburg.de/v1.0/Things(${id})/Datastreams`
   ).then((res) => res.json())
 
+  const dataStream_id = thing.value[0]['@iot.id']
+
   const getThingName = await fetch(
     thing.value[0]['Thing@iot.navigationLink']
   ).then((res) => res.json())
 
+  const getAvailablesBikes = await fetch(
+    `https://iot.hamburg.de/v1.0/Datastreams(${dataStream_id})/Observations?$top=2&$select=phenomenonTime,result&$orderby=phenomenonTime+desc`
+  ).then((res) => res.json())
+
+  const availableBikes = getAvailablesBikes.value[0].result
+  const lastUpdated = dayjs(getAvailablesBikes.value[0].phenomenonTime).format(
+    'DD/MM/YYYY HH:mm:ss'
+  )
+
   const [lat, long] = thing.value[0].observedArea.coordinates[1]
+
   const response = {
     station_description: getThingName.description,
     coordinates: [long, lat],
-    dataStream_id: thing.value[0]['@iot.id'],
+    dataStream_id,
+    availableBikes,
+    lastUpdated,
   }
   res.status(200).json(response)
 })
