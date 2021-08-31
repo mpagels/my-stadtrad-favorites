@@ -28,7 +28,7 @@ export default function Thing({ toggleFavorit, favorites }) {
   } = data
 
   function handleOnClick() {
-    toggleFavorit(dataStream_id, data)
+    toggleFavorit(dataStream_id, { ...data, id })
   }
   return (
     <div>
