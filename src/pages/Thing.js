@@ -29,7 +29,8 @@ export default function Thing({ toggleFavorit, favorites }) {
     toggleFavorit(dataStream_id, { ...data, id })
   }
   return (
-    <div>
+    <Wrapper>
+      <Blue />
       <h2>{station_description}</h2>
 
       <MyMap
@@ -57,7 +58,7 @@ export default function Thing({ toggleFavorit, favorites }) {
           : 'Station zu Favoriten hinzufügen'}
       </button>
       <button onClick={() => history.goBack()}>Zurück</button>
-    </div>
+    </Wrapper>
   )
 }
 
@@ -76,4 +77,17 @@ const MyMap = styled(MapContainer)`
   */
   height: ${(props) => props.height};
   width: 100vw;
+`
+
+const Blue = styled.div`
+  position: absolute;
+  top: 0;
+  background-color: #003063;
+  width: 100vw;
+  height: 35%;
+  z-index: -1;
+`
+
+const Wrapper = styled.div`
+  position: relative;
 `
