@@ -58,7 +58,7 @@ app.get('/api/get-thing/:id', async (req, res) => {
 
   const availableBikes = getAvailablesBikes.value[0].result
   const lastUpdated = dayjs(getAvailablesBikes.value[0].phenomenonTime).format(
-    'DD/MM/YYYY HH:mm:ss'
+    'DD.MM. - HH:mm:ss'
   )
 
   const [lat, long] = thing.value[0].observedArea.coordinates[1]
@@ -69,6 +69,7 @@ app.get('/api/get-thing/:id', async (req, res) => {
     dataStream_id,
     availableBikes,
     lastUpdated,
+    thing_id: id,
   }
   res.status(200).json(response)
 })
