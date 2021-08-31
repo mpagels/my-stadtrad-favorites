@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import fetchLocations from '../services/apiFetch'
 
 export default function Test() {
@@ -12,7 +13,7 @@ export default function Test() {
 
   console.log(data)
   return (
-    <div>
+    <Wrapper>
       <input value={searchInput} onChange={handleOnChange} />
       {data
         .filter((location) =>
@@ -22,22 +23,24 @@ export default function Test() {
           const { station_description, thing_id } = location
           return (
             <section key={station_description}>
-              <p>{station_description}</p>
-              <p>iot.id: {thing_id}</p>
               <Link
                 to={{
                   pathname: `/thing/${thing_id}`,
                 }}
               >
-                About
+                {station_description}
               </Link>
             </section>
           )
         })}
-    </div>
+    </Wrapper>
   )
 
   function handleOnChange(event) {
     setSearchInput(event.target.value)
   }
 }
+
+const Wrapper = styled.div`
+  overflow-y: scroll;
+`
