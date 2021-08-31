@@ -19,6 +19,11 @@ export default function FooterNavBar() {
 }
 
 const Footer = styled.footer`
+  position: fixed;
+  bottom: 0px;
+  height: 75px;
+  width: 100vw;
+  background-color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;

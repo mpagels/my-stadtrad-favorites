@@ -14,8 +14,9 @@ body {
 
 #root {
     display: grid;
-    grid-template-rows: 75px auto 75px;
+    grid-template-rows: 75px auto;
     height: 100vh;
+    padding-bottom: 50px;
 }
 :root {
     --main-brand-background: #008c9e;
