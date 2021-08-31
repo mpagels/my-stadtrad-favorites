@@ -11,7 +11,6 @@ export default function Test() {
 
   if (error) return 'An error has occurred: ' + error.message
 
-  console.log(data)
   return (
     <Wrapper>
       <input value={searchInput} onChange={handleOnChange} />

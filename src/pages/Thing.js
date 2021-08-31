@@ -17,8 +17,7 @@ export default function Thing({ toggleFavorit, favorites }) {
   if (isLoading) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
-  console.log(data)
-  console.log(location)
+
   const {
     station_description,
     dataStream_id,
