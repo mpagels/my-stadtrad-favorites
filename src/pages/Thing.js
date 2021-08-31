@@ -2,9 +2,10 @@ import React from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { useQuery } from 'react-query'
 import { useLocation, useParams, useHistory } from 'react-router-dom'
+import styled from 'styled-components'
 import { fetchThing } from '../services/apiFetch'
 
-export default function Thing() {
+export default function Thing({ toggleFavorit, favorites }) {
   const { id } = useParams()
   const location = useLocation()
   const history = useHistory()
@@ -25,6 +26,10 @@ export default function Thing() {
     availableBikes,
     lastUpdated,
   } = data
+
+  function handleOnClick() {
+    toggleFavorit(dataStream_id, data)
+  }
   return (
     <div>
       <h2>{station_description}</h2>
@@ -48,6 +53,11 @@ export default function Thing() {
         <p>Verfügbare Fahrräder: {availableBikes}</p>
         <p>Zuletzt geupdated: {lastUpdated}</p>
       </section>
+      <button onClick={handleOnClick}>
+        {favorites.some((fav) => fav.dataStream_id === dataStream_id)
+          ? 'Station von Favoriten entfernen'
+          : 'Station zu Favoriten hinzufügen'}
+      </button>
       <button onClick={() => history.goBack()}>Zurück</button>
     </div>
   )

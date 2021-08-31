@@ -7,7 +7,22 @@ import Stadtrad from './components/Stadtrad'
 import SearchStations from './pages/SearchStations'
 import Thing from './pages/Thing'
 import Favorites from './pages/Favorites'
+import { useState } from 'react'
 function App() {
+  const [favorites, setFavorites] = useState([])
+
+  function toggleFavorit(id, newFavorite) {
+    if (
+      favorites.filter((favorite) => favorite.dataStream_id === id).length > 0
+    ) {
+      setFavorites(
+        favorites.filter((favorite) => favorite.dataStream_id !== id)
+      )
+    } else {
+      setFavorites([...favorites, newFavorite])
+    }
+  }
+
   return (
     <>
       <Header />
@@ -15,7 +30,7 @@ function App() {
 
       <Switch>
         <Route path="/thing/:id">
-          <Thing />
+          <Thing toggleFavorit={toggleFavorit} favorites={favorites} />
         </Route>
         <Route path="/favorites">
           <Favorites />
