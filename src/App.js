@@ -6,29 +6,28 @@ import Header from './components/Header'
 import Stadtrad from './components/Stadtrad'
 import SearchStations from './pages/SearchStations'
 import Thing from './pages/Thing'
-
+import Favorites from './pages/Favorites'
 function App() {
   return (
     <>
       <Header />
       {/* <Stadtrad /> */}
-      <Main>
-        <Switch>
-          <Route path="/thing/:id">
-            <Thing />
-          </Route>
-          <Route path="/">
-            <SearchStations />
-          </Route>
-        </Switch>
-      </Main>
+
+      <Switch>
+        <Route path="/thing/:id">
+          <Thing />
+        </Route>
+        <Route path="/favorites">
+          <Favorites />
+        </Route>
+        <Route path="/">
+          <SearchStations />
+        </Route>
+      </Switch>
+
       <FooterNavBar />
     </>
   )
 }
 
 export default App
-
-const Main = styled.main`
-  overflow-y: scroll;
-`
