@@ -1,8 +1,7 @@
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import FooterNavBar from './components/FooterNavBar'
 import Header from './components/Header'
 // eslint-disable-next-line no-unused-vars
-import Stadtrad from './components/Stadtrad'
 import SearchStations from './pages/SearchStations'
 import Thing from './pages/Thing'
 import Favorites from './pages/Favorites'
