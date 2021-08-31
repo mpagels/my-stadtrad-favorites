@@ -39,13 +39,12 @@ function App() {
           <Thing toggleFavorit={toggleFavorit} favorites={favorites} />
         </Route>
         <Route path="/favorites">
-          <Favorites />
+          <Favorites favorites={favorites} toggleFavorit={toggleFavorit} />
         </Route>
         <Route path="/">
           <SearchStations />
         </Route>
       </Switch>
-
       <FooterNavBar />
     </>
   )
