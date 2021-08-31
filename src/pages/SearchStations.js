@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import fetchLocations from '../services/apiFetch'
 
-export default function Test() {
+export default function SearchStations() {
   const { isLoading, error, data } = useQuery('locations', fetchLocations)
   const [searchInput, setSearchInput] = useState('')
   if (isLoading) return 'Loading...'
