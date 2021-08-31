@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import FooterNavBar from './components/FooterNavBar'
 import Header from './components/Header'
 // eslint-disable-next-line no-unused-vars
@@ -26,8 +26,6 @@ function App() {
   return (
     <>
       <Header />
-      {/* <Stadtrad /> */}
-
       <Switch>
         <Route path="/thing/:id">
           <Thing toggleFavorit={toggleFavorit} favorites={favorites} />
