@@ -29,10 +29,11 @@ export default function Thing() {
     <div>
       <h2>{station_description}</h2>
 
-      <MapContainer
+      <MyMap
         center={[coordinates[0], coordinates[1]]}
         zoom={18}
         scrollWheelZoom={true}
+        height="300px"
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -42,7 +43,7 @@ export default function Thing() {
           <Popup>Stadtrad-Station</Popup>
         </Marker>
         <ChangeMapView coords={[coordinates[0], coordinates[1]]} />
-      </MapContainer>
+      </MyMap>
       <section>
         <p>Verfügbare Fahrräder: {availableBikes}</p>
         <p>Zuletzt geupdated: {lastUpdated}</p>
@@ -58,3 +59,13 @@ function ChangeMapView({ coords }) {
 
   return null
 }
+
+const MyMap = styled(MapContainer)`
+  /*
+    Any dynamic styling that will change the
+    dynamically generated classname will remove
+    the leaflet classnames from the container.
+  */
+  height: ${(props) => props.height};
+  width: 100vw;
+`

@@ -30,10 +30,6 @@ body {
     --button-shadow-focused: tba;
 }
 
-.leaflet-container {
-    width: 100vw;
-    height: 300px;
-}
 
 @font-face {
     font-family: "Montserrat"; 
