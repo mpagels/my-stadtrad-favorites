@@ -7,9 +7,17 @@ import Stadtrad from './components/Stadtrad'
 import SearchStations from './pages/SearchStations'
 import Thing from './pages/Thing'
 import Favorites from './pages/Favorites'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 function App() {
   const [favorites, setFavorites] = useState([])
+
+  useEffect(() => {
+    setFavorites(JSON.parse(localStorage.getItem('favorites')) || [])
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+  }, [favorites])
 
   function toggleFavorit(id, newFavorite) {
     if (
