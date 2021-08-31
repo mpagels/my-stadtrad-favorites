@@ -5,6 +5,7 @@ import { useQuery } from 'react-query'
 import { fetchThing } from '../services/apiFetch'
 import { Link } from 'react-router-dom'
 import { RiHeart3Fill } from 'react-icons/ri'
+import removeFirstWordFromStationName from '../utils/formatStationDescription'
 
 export default function Favorite({ id, toggleFavorit }) {
   const { isLoading, error, data } = useQuery(['fetchThing', id], () =>
@@ -24,7 +25,7 @@ export default function Favorite({ id, toggleFavorit }) {
     thing_id,
   } = data
 
-  const title = station_description.split(' ').slice(1).join(' ')
+  const title = removeFirstWordFromStationName(station_description)
 
   function handleClick() {
     toggleFavorit(dataStream_id)
