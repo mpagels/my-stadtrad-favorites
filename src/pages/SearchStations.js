@@ -42,4 +42,5 @@ export default function SearchStations() {
 
 const Wrapper = styled.div`
   overflow-y: scroll;
+  padding: 10px;
 `
