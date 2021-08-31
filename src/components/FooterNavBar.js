@@ -7,10 +7,10 @@ export default function FooterNavBar() {
       <Navigation>
         <NavList>
           <li>
-            <NavLink to="/favorites">Meine Favoriten</NavLink>
+            <NavLink to="/">Meine Favoriten</NavLink>
           </li>
           <li>
-            <NavLink to="/">Stationssuche</NavLink>
+            <NavLink to="/search">Stationssuche</NavLink>
           </li>
         </NavList>
       </Navigation>

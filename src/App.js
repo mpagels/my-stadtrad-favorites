@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import FooterNavBar from './components/FooterNavBar'
 import Header from './components/Header'
 // eslint-disable-next-line no-unused-vars
@@ -37,11 +37,11 @@ function App() {
         <Route path="/thing/:id">
           <Thing toggleFavorit={toggleFavorit} favorites={favorites} />
         </Route>
-        <Route path="/favorites">
-          <Favorites favorites={favorites} toggleFavorit={toggleFavorit} />
+        <Route path="/search">
+          <SearchStations />
         </Route>
         <Route path="/">
-          <SearchStations />
+          <Favorites favorites={favorites} toggleFavorit={toggleFavorit} />
         </Route>
       </Switch>
       <FooterNavBar />
