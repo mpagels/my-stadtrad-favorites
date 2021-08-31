@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export default function FooterNavBar() {
@@ -5,8 +6,12 @@ export default function FooterNavBar() {
     <Footer>
       <Navigation>
         <NavList>
-          <li>Meine Stationen</li>
-          <li>Stationssuche</li>
+          <li>
+            <NavLink to="/favorites">Meine Stationen</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Stationssuche</NavLink>
+          </li>
         </NavList>
       </Navigation>
     </Footer>
