@@ -1,13 +1,12 @@
 import React from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { useQuery } from 'react-query'
-import { useLocation, useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { fetchThing } from '../services/apiFetch'
 
 export default function Thing({ toggleFavorit, favorites }) {
   const { id } = useParams()
-  const location = useLocation()
   const history = useHistory()
 
   const { isLoading, error, data } = useQuery('fetchThing', () =>
