@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/mpagels/my-stadtrad-favorites">
+    <img src="docs/logo.png" alt="Logo">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">My StadtRAD Hamburg Favorites</h3>
 
-## Available Scripts
+  <p align="center">
+    This app let you save every StadtRAD station in Hamburg and shows you the available bikes at the saved station.
+    <br />
+    <a href="http://my-stadtrad-favorites.vercel.app/">Visit & use App</a>
+    ·
+    <a href="https://github.com/mpagels/my-stadtrad-favorites/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/mpagels/my-stadtrad-favorites/issues">Request Feature</a>
+  </p>
+</p>
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+<li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-### `npm start`
+<!-- ABOUT THE PROJECT -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## About The Project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![App main screen](docs/screen_1.png)
+![App main screen](docs/screen_2.png)
+![App main screen](docs/screen_3.png)
 
-### `npm test`
+I recently found out that my hometown has these internet of things api which gives back the information of the StadradHH service. Every 5min the api is updated. In the last time I'm using the service quite often and the offical app did not provide a "save your favorite station" feature. And the app is sometimes not showing the availables bikes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Right now the app let you search for every bike station in Hamburg and let you save the station. React-query is updating the data when you come back to the app.
 
-### `npm run build`
+The IOT api is quite big and powerful. To handle all the data I wrote a BFF (backend for frontend) that handles all the necessary fetching and just send the data backt to react frontend that is needed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The App is deployed on vercel. The express server is served as well with vercel as serverless functions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Express as BFF
+- react-query
+- react-router
+- leatlef-react
+- dayjs
+- styled-components
+- StadtRADHH API
+<!-- GETTING STARTED -->
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To get a local copy up and running follow these simple steps.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/mpagels/my-stadtrad-favorites
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Work with express.js in local development, add this line to your `package.json` file
+   ```json
+   "proxy": "http://localhost:5000/"
+   ```
+4. Run express.js server
+   ```sh
+   npm run dev
+   ```
+5. Start react
+   ```sh
+   npm start
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contributing
 
-## Learn More
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- LICENSE -->
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Distributed under the MIT License. See `LICENSE` for more information.
 
-### Analyzing the Bundle Size
+<!-- CONTACT -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact
 
-### Making a Progressive Web App
+Martin Pagels - [@MPagels](https://twitter.com/twitter_handlehttps://twitter.com/MPagels) - office@martinpagels.de
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Project Link: [https://github.com/github_username/repo_namehttps://github.com/mpagels/my-stadtrad-favorites](https://github.com/github_username/repo_namehttps://github.com/mpagels/my-stadtrad-favorites)
 
-### Advanced Configuration
+<!-- ACKNOWLEDGEMENTS -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Acknowledgements
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [StadtRAD Hamburg API Infos](https://metaver.de/trefferanzeige?docuuid=D18F375E-FA5F-4998-AFF8-557969F44479#)
+- [API Doc](http://docs.opengeospatial.org/is/15-078r6/15-078r6.html)
