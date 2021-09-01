@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Input from '../components/Input'
+import useInput from '../hooks/useInput'
 import fetchLocations from '../services/apiFetch'
 
 export default function SearchStations() {
+  const { searchInput, handleOnChange } = useInput()
+
   const { isLoading, error, data } = useQuery('locations', fetchLocations)
-  const [searchInput, setSearchInput] = useState('')
+
   if (isLoading) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
@@ -39,10 +42,6 @@ export default function SearchStations() {
       </ResultList>
     </Wrapper>
   )
-
-  function handleOnChange(event) {
-    setSearchInput(event.target.value)
-  }
 }
 
 const ResultList = styled.ul`
