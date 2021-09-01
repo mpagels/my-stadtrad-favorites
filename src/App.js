@@ -5,29 +5,10 @@ import Header from './components/Header'
 import SearchStations from './pages/SearchStations'
 import Thing from './pages/Thing'
 import Favorites from './pages/Favorites'
-import { useState, useEffect } from 'react'
+import useFavorite from './hooks/useFavorite'
+
 function App() {
-  const [favorites, setFavorites] = useState([])
-
-  useEffect(() => {
-    setFavorites(JSON.parse(localStorage.getItem('favorites')) || [])
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-  }, [favorites])
-
-  function toggleFavorit(id, newFavorite) {
-    if (
-      favorites.filter((favorite) => favorite.dataStream_id === id).length > 0
-    ) {
-      setFavorites(
-        favorites.filter((favorite) => favorite.dataStream_id !== id)
-      )
-    } else {
-      setFavorites([...favorites, newFavorite])
-    }
-  }
+  const { favorites, toggleFavorit } = useFavorite()
 
   return (
     <>
