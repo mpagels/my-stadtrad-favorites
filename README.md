@@ -89,7 +89,7 @@ To get a local copy up and running follow these simple steps.
    ```
 4. Run express.js server
    ```sh
-   npm run dev
+   npm run api
    ```
 5. Start react
    ```sh
