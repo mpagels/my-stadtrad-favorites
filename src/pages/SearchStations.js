@@ -9,7 +9,11 @@ import fetchLocations from '../services/apiFetch'
 export default function SearchStations() {
   const { searchInput, handleOnChange } = useInput()
 
-  const { isLoading, error, data } = useQuery('locations', fetchLocations)
+  const {
+    isLoading,
+    error,
+    data: locations,
+  } = useQuery('locations', fetchLocations)
 
   if (isLoading) return 'Loading...'
 
@@ -19,29 +23,33 @@ export default function SearchStations() {
     <Wrapper>
       <Input value={searchInput} handleOnChange={handleOnChange} />
       <ResultList>
-        {data
-          .filter((location) =>
-            location.station_description
-              .toLowerCase()
-              .includes(searchInput.toLowerCase())
-          )
-          .map((location) => {
-            const { station_description, thing_id } = location
-            return (
-              <Result key={station_description}>
-                <Link
-                  to={{
-                    pathname: `/thing/${thing_id}`,
-                  }}
-                >
-                  {station_description}
-                </Link>
-              </Result>
-            )
-          })}
+        {locations.filter(isLocationInSearchInput).map(renderFilteredLocations)}
       </ResultList>
     </Wrapper>
   )
+
+  // helper function
+
+  function isLocationInSearchInput(location) {
+    return location.station_description
+      .toLowerCase()
+      .includes(searchInput.toLowerCase())
+  }
+
+  function renderFilteredLocations(location) {
+    const { station_description, thing_id } = location
+    return (
+      <Result key={station_description}>
+        <Link
+          to={{
+            pathname: `/thing/${thing_id}`,
+          }}
+        >
+          {station_description}
+        </Link>
+      </Result>
+    )
+  }
 }
 
 const ResultList = styled.ul`
