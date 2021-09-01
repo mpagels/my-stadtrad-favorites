@@ -3,7 +3,9 @@ const app = express()
 //const port = process.env.PORT || 5000
 const fetch = require('node-fetch')
 //const cors = require('cors')
-var dayjs = require('dayjs')
+const dayjs = require('dayjs')
+const utc = require('dayjs/plugin/utc')
+dayjs.extend(utc)
 
 //pp.use(cors())
 
@@ -57,9 +59,10 @@ app.get('/api/get-thing/:id', async (req, res) => {
   ).then((res) => res.json())
 
   const availableBikes = getAvailablesBikes.value[0].result
-  const lastUpdated = dayjs(getAvailablesBikes.value[0].phenomenonTime).format(
-    'DD.MM. - HH:mm:ss'
-  )
+  const lastUpdated = dayjs
+    .utc(getAvailablesBikes.value[0].phenomenonTime)
+    .local()
+    .format('DD.MM. - HH:mm:ss')
 
   const [lat, long] = thing.value[0].observedArea.coordinates[1]
 
