@@ -3,10 +3,6 @@ const app = express()
 
 const fetch = require('node-fetch')
 
-const dayjs = require('dayjs')
-const utc = require('dayjs/plugin/utc')
-dayjs.extend(utc)
-
 app.get('/api/get-location', async (req, res) => {
   const locations = await Promise.all([
     fetch(
@@ -55,10 +51,7 @@ app.get('/api/get-thing/:id', async (req, res) => {
   ).then((res) => res.json())
 
   const availableBikes = getAvailablesBikes.value[0].result
-  const lastUpdated = dayjs
-    .utc(getAvailablesBikes.value[0].phenomenonTime)
-    .local()
-    .format('DD.MM. - HH:mm:ss')
+  const lastUpdated = getAvailablesBikes.value[0].phenomenonTime
 
   const [lat, long] = thing.value[0].observedArea.coordinates[1]
 

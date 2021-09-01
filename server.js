@@ -4,10 +4,6 @@ const port = process.env.PORT || 5000
 const fetch = require('node-fetch')
 const cors = require('cors')
 
-const dayjs = require('dayjs')
-const utc = require('dayjs/plugin/utc')
-dayjs.extend(utc)
-
 app.use(cors())
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
@@ -60,10 +56,7 @@ app.get('/api/get-thing/:id', async (req, res) => {
   ).then((res) => res.json())
 
   const availableBikes = getAvailablesBikes.value[0].result
-  const lastUpdated = dayjs
-    .utc(getAvailablesBikes.value[0].phenomenonTime)
-    .local()
-    .format('DD.MM. - HH:mm:ss')
+  const lastUpdated = getAvailablesBikes.value[0].phenomenonTime
 
   const [lat, long] = thing.value[0].observedArea.coordinates[1]
 
