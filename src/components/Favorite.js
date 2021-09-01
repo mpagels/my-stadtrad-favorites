@@ -6,6 +6,7 @@ import { fetchThing } from '../services/apiFetch'
 import { Link } from 'react-router-dom'
 import { RiHeart3Fill } from 'react-icons/ri'
 import removeFirstWordFromStationName from '../utils/formatStationDescription'
+import getLocalTime from '../utils/getLocalTime'
 
 export default function Favorite({ id, toggleFavorit }) {
   const { isLoading, error, data } = useQuery(['fetchThing', id], () =>
@@ -60,7 +61,7 @@ export default function Favorite({ id, toggleFavorit }) {
       </StationName>
       <AvailableWrapper>
         <Available>{availableBikes}</Available>
-        <LastUpdated>{lastUpdated}</LastUpdated>
+        <LastUpdated>{getLocalTime(lastUpdated)}</LastUpdated>
       </AvailableWrapper>
     </FavoriteWrapper>
   )

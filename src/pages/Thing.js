@@ -7,6 +7,7 @@ import { fetchThing } from '../services/apiFetch'
 import removeFirstWordFromStationName from '../utils/formatStationDescription'
 import { IoReturnDownBack } from 'react-icons/io5'
 import { IconContext } from 'react-icons'
+import getLocalTime from '../utils/getLocalTime'
 
 export default function Thing({ toggleFavorit, favorites }) {
   const { id } = useParams()
@@ -59,7 +60,9 @@ export default function Thing({ toggleFavorit, favorites }) {
       </MyMap>
       <StationInfos>
         <Title>{title}</Title>
-        <LastUpdated>Zuletzt geupdated: {lastUpdated}</LastUpdated>
+        <LastUpdated>
+          Zuletzt geupdated: {getLocalTime(lastUpdated)}
+        </LastUpdated>
         <Bikes>
           <Count>{availableBikes}</Count>
           Fahrräder
