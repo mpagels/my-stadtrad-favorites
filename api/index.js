@@ -1,15 +1,11 @@
 const express = require('express')
 const app = express()
-//const port = process.env.PORT || 5000
+
 const fetch = require('node-fetch')
-//const cors = require('cors')
+
 const dayjs = require('dayjs')
 const utc = require('dayjs/plugin/utc')
 dayjs.extend(utc)
-
-//pp.use(cors())
-
-//app.listen(port, () => console.log(`Listening on port ${port}`))
 
 app.get('/api/get-location', async (req, res) => {
   const locations = await Promise.all([
