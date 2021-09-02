@@ -7,7 +7,7 @@ export default function Map({
   height,
   width,
   zoomControl = true,
-  hasShadow,
+  hasShadow = false,
   hasZIndex,
 }) {
   return (
@@ -18,6 +18,8 @@ export default function Map({
       height={height}
       width={width}
       hasShadow={hasShadow}
+      zoomControl={zoomControl}
+      hasZIndex={hasZIndex}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -52,5 +54,5 @@ const MyMap = styled(MapContainer)`
     `box-shadow: 0 5.9px 5.4px -84px rgba(0, 0, 0, 0.133),
     0 19.7px 18.1px -84px rgba(0, 0, 0, 0.197),
     0 88px 81px -84px rgba(0, 0, 0, 0.33);`}
-  ${({ hasZIndex }) => hasZIndex && 'z-index : 5;'}
+  ${({ hasZIndex }) => hasZIndex && 'z-index : 2;'}
 `
