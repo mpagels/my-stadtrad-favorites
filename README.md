@@ -25,6 +25,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#features">Features</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -56,6 +57,14 @@ Right now the app let you search for every bike station in Hamburg and let you s
 The IOT api is quite big and powerful. To handle all the data I wrote a BFF (backend for frontend) that handles all the necessary fetching and just send the data backt to react frontend that is needed.
 
 The App is deployed on vercel. The express server is served as well with vercel as serverless functions.
+
+### Features
+
+- Find every StadtRAD station
+- Inspect every StadtRAD station with map and available bikes
+- Every station is updated every 5 minutes
+- save StadtRAD station in a favorite list
+- See saved stations in a small dashboard (updates automatically)
 
 ### Built With
 
