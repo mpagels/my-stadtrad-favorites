@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import Map from '../components/Map'
 import { useQuery } from 'react-query'
 import { fetchThing } from '../services/apiFetch'
 import { Link } from 'react-router-dom'
@@ -39,23 +39,14 @@ export default function Favorite({ id, toggleFavorit }) {
           <RiHeart3Fill />
         </FavoriteButton>
       </ButtonWrapper>
-      <MyMap
-        center={[coordinates[0], coordinates[1]]}
-        zoom={15}
-        scrollWheelZoom={true}
+      <Map
+        coordinates={coordinates}
+        zoomNumber={15}
         height="150px"
-        width="auto"
+        width={'auto'}
         zoomControl={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[coordinates[0], coordinates[1]]}>
-          <Popup>Stadtrad-Station</Popup>
-        </Marker>
-        <ChangeMapView coords={[coordinates[0], coordinates[1]]} />
-      </MyMap>
+        hasZIndex={true}
+      ></Map>
       <StationName>
         <Link to={`/thing/${thing_id}`}>{title}</Link>
       </StationName>
@@ -65,13 +56,6 @@ export default function Favorite({ id, toggleFavorit }) {
       </AvailableWrapper>
     </FavoriteWrapper>
   )
-}
-
-function ChangeMapView({ coords }) {
-  const map = useMap()
-  map.setView(coords, map.getZoom())
-
-  return null
 }
 
 const Available = styled.p`
@@ -113,17 +97,6 @@ const FavoriteButton = styled.button`
   box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02), 0 0px 5.3px rgba(0, 0, 0, 0.028),
     0 0px 10px rgba(0, 0, 0, 0.035), 0 0px 17.9px rgba(0, 0, 0, 0.042),
     0 0px 33.4px rgba(0, 0, 0, 0.05), 0 0px 80px rgba(0, 0, 0, 0.07);
-`
-const MyMap = styled(MapContainer)`
-  /*
-      Any dynamic styling that will change the
-      dynamically generated classname will remove
-      the leaflet classnames from the container.
-    */
-  border-radius: 15px;
-  height: ${(props) => props.height};
-  width: ${(props) => props.width ?? '100vw'};
-  z-index: 2;
 `
 
 const LastUpdated = styled.p`
