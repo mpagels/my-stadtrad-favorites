@@ -50,10 +50,10 @@ export default function Favorite({ id, toggleFavorit }) {
       <StationName>
         <Link to={`/thing/${thing_id}`}>{title}</Link>
       </StationName>
-      <AvailableWrapper>
+      <div>
         <Available>{availableBikes}</Available>
         <LastUpdated>{getLocalTime(lastUpdated)}</LastUpdated>
-      </AvailableWrapper>
+      </div>
     </FavoriteWrapper>
   )
 }
@@ -63,8 +63,6 @@ const Available = styled.p`
   font-size: 2em;
   margin: 0;
 `
-
-const AvailableWrapper = styled.div``
 
 const ButtonWrapper = styled.div`
   position: absolute;
