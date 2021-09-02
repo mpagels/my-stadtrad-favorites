@@ -105,6 +105,16 @@ To get a local copy up and running follow these simple steps.
    npm start
    ```
 
+## FAQ
+
+#### Q: You said, the stations are updated every 5min, but my station is currently not updated since 30min or more
+
+TL;DR: The station is checked every 5 minutes. But the IOT api is only updating when the stations is reporting any changes in the available bikes. This means, since 30min there was no change in the bike count.
+
+How I understand it is that the IOT api is asking the station every 5min for any new changes since last update.  
+Lets asume at 00:00 o'clock there are 5 bikes available at a station. From 00:00 to 00:05 one bike was rented. Now the API ask for a report at 00:05 and the station reports a change of 1 bike less. The api updates.  
+From 00:05 to 00:10 there were 2 more bike rents but 2 bikes were also returned. So at 00:10 there are still 4 bikes at the station. Therefore no change in the count. The api is not updated, because no change since last call.
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
