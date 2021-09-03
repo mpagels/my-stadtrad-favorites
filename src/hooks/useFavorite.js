@@ -12,16 +12,28 @@ export default function useFavorite() {
   }, [favorites])
 
   function toggleFavorit(id, newFavorite) {
-    if (
-      favorites.filter((favorite) => favorite.dataStream_id === id).length > 0
-    ) {
-      setFavorites(
-        favorites.filter((favorite) => favorite.dataStream_id !== id)
-      )
+    if (isFavorite(id)) {
+      removeFavorite(id)
     } else {
-      setFavorites([...favorites, newFavorite])
+      addFavorite(newFavorite)
     }
   }
 
   return { favorites, toggleFavorit }
+
+  // helper functions
+
+  function isFavorite(id) {
+    return (
+      favorites.filter((favorite) => favorite.dataStream_id === id).length > 0
+    )
+  }
+
+  function removeFavorite(id) {
+    setFavorites(favorites.filter((favorite) => favorite.dataStream_id !== id))
+  }
+
+  function addFavorite(newFavorite) {
+    setFavorites([...favorites, newFavorite])
+  }
 }
