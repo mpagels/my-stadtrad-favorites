@@ -3,12 +3,15 @@ import styled from 'styled-components'
 import { RiSearchLine } from 'react-icons/ri'
 import { IconContext } from 'react-icons'
 
-export default function Input({ value, handleOnChange }) {
+export default function Input({ inputValue, updateInput }) {
+  function handleOnChange(event) {
+    updateInput(event.target.value)
+  }
   return (
     <InputWrapper>
       <StyledInput
         placeholder="Station suchen"
-        value={value}
+        value={inputValue}
         onChange={handleOnChange}
       />
       <IconContext.Provider

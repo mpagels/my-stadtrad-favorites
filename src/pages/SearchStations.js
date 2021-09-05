@@ -7,7 +7,7 @@ import useInput from '../hooks/useInput'
 import fetchLocations from '../services/apiFetch'
 
 export default function SearchStations() {
-  const { searchInput, handleOnChange } = useInput()
+  const { searchInput, updateInput } = useInput()
 
   const { isLoading, error, data: locations } = useQuery(
     'locations',
@@ -18,7 +18,7 @@ export default function SearchStations() {
 
   return (
     <Wrapper>
-      <Input value={searchInput} handleOnChange={handleOnChange} />
+      <Input inputValue={searchInput} updateInput={updateInput} />
       <ResultWrapper>
         {isLoading ? (
           'loading'
