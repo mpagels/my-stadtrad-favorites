@@ -18,7 +18,7 @@ function App() {
           <Thing toggleFavorit={toggleFavorit} favorites={favorites} />
         </Route>
         <Route path="/search">
-          <SearchStations />
+          <SearchStations favorites={favorites} toggleFavorit={toggleFavorit} />
         </Route>
         <Route path="/">
           <Favorites favorites={favorites} toggleFavorit={toggleFavorit} />
