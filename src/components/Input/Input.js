@@ -46,6 +46,7 @@ const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 10px;
   height: 75px;
   padding: 10px 30px 10px;
   border-radius: 15px;

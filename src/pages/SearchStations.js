@@ -56,6 +56,7 @@ export default function SearchStations({ isFavorite, toggleFavorit }) {
 
 const ResultWrapper = styled.div`
   overflow-y: scroll;
+  padding: 0 10px;
 `
 
 const ResultList = styled.ul`
@@ -64,7 +65,6 @@ const ResultList = styled.ul`
 `
 
 const Wrapper = styled.div`
-  padding: 10px;
   display: grid;
   grid-template-rows: auto 100%;
   height: 100%;
