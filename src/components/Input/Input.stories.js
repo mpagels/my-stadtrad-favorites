@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SearchStation from './SearchStation'
+import SearchStation from './Input'
 
 export default {
   title: 'Search Station Input',

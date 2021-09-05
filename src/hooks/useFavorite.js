@@ -24,11 +24,17 @@ export default function useFavorite() {
   // helper functions
 
   function isFavorite(thing_id) {
-    return favorites.some((favorite) => favorite.thing_id === thing_id)
+    return favorites.some(
+      (favorite) => Number(favorite.thing_id) === Number(thing_id)
+    )
   }
 
   function removeFavorite(thing_id) {
-    setFavorites(favorites.filter((favorite) => favorite.thing_id !== thing_id))
+    setFavorites(
+      favorites.filter(
+        (favorite) => Number(favorite.thing_id) !== Number(thing_id)
+      )
+    )
   }
 
   function addFavorite(newFavorite) {

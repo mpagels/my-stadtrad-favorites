@@ -18,10 +18,17 @@ function App() {
           <Thing toggleFavorit={toggleFavorit} isFavorite={isFavorite} />
         </Route>
         <Route path="/search">
-          <SearchStations />
+          <SearchStations
+            isFavorite={isFavorite}
+            toggleFavorit={toggleFavorit}
+          />
         </Route>
         <Route path="/">
-          <Favorites favorites={favorites} toggleFavorit={toggleFavorit} />
+          <Favorites
+            favorites={favorites}
+            toggleFavorit={toggleFavorit}
+            isFavorite={isFavorite}
+          />
         </Route>
       </Switch>
       <FooterNavBar />
