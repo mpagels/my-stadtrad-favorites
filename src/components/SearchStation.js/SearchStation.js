@@ -1,12 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { RiSearchLine } from 'react-icons/ri'
+import { RiSearchLine, RiCloseCircleFill } from 'react-icons/ri'
 import { IconContext } from 'react-icons'
 
 export default function Input({ inputValue, updateInput }) {
   function handleOnChange(event) {
     updateInput(event.target.value)
   }
+
+  function resetInputValue() {
+    updateInput('')
+  }
+
   return (
     <InputWrapper>
       <StyledInput
@@ -17,11 +22,25 @@ export default function Input({ inputValue, updateInput }) {
       <IconContext.Provider
         value={{ size: '2.5em', color: 'grey', width: '100%' }}
       >
-        <RiSearchLine />
+        {inputValue === '' ? (
+          <RiSearchLine />
+        ) : (
+          <Button onClick={resetInputValue}>
+            <RiCloseCircleFill />
+          </Button>
+        )}
       </IconContext.Provider>
     </InputWrapper>
   )
 }
+
+const Button = styled.button`
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 const InputWrapper = styled.div`
   display: flex;
