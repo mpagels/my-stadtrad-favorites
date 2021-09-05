@@ -8,28 +8,21 @@ import { RiHeart3Fill } from 'react-icons/ri'
 import removeFirstWordFromStationName from '../utils/formatStationDescription'
 import getLocalTime from '../utils/getLocalTime'
 
-export default function Favorite({ id, toggleFavorit }) {
-  const { isLoading, error, data } = useQuery(['fetchThing', id], () =>
-    fetchThing(id)
+export default function Favorite({ thing_id, toggleFavorit }) {
+  const { isLoading, error, data } = useQuery(['fetchThing', thing_id], () =>
+    fetchThing(thing_id)
   )
 
   if (isLoading) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
 
-  const {
-    station_description,
-    dataStream_id,
-    coordinates,
-    availableBikes,
-    lastUpdated,
-    thing_id,
-  } = data
+  const { station_description, coordinates, availableBikes, lastUpdated } = data
 
   const title = removeFirstWordFromStationName(station_description)
 
   function handleClick() {
-    toggleFavorit(dataStream_id)
+    toggleFavorit(thing_id)
   }
 
   return (

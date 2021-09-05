@@ -24,13 +24,11 @@ export default function useFavorite() {
   // helper functions
 
   function isFavorite(id) {
-    return (
-      favorites.filter((favorite) => favorite.dataStream_id === id).length > 0
-    )
+    return favorites.filter((favorite) => favorite.thing_id === id).length > 0
   }
 
   function removeFavorite(id) {
-    setFavorites(favorites.filter((favorite) => favorite.dataStream_id !== id))
+    setFavorites(favorites.filter((favorite) => favorite.thing_id !== id))
   }
 
   function addFavorite(newFavorite) {

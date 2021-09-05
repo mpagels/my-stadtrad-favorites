@@ -10,7 +10,7 @@ export default function Favorites({ favorites, toggleFavorit }) {
         favorites.map((fav) => (
           <Favorite
             key={fav.station_description}
-            id={fav.id}
+            thing_id={fav.thing_id}
             toggleFavorit={toggleFavorit}
           />
         ))
