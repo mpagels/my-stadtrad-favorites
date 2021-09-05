@@ -3,9 +3,9 @@ import { useState } from 'react'
 export default function useInput() {
   const [searchInput, setSearchInput] = useState('')
 
-  function handleOnChange(event) {
-    setSearchInput(event.target.value)
+  function updateInput(string) {
+    setSearchInput(string)
   }
 
-  return { searchInput, handleOnChange }
+  return { searchInput, updateInput }
 }
