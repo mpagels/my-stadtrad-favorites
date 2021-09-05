@@ -9,7 +9,7 @@ import { IoReturnDownBack } from 'react-icons/io5'
 import { IconContext } from 'react-icons'
 import getLocalTime from '../utils/getLocalTime'
 
-export default function Thing({ toggleFavorit, favorites }) {
+export default function Thing({ toggleFavorit, isFavorite }) {
   const { thing_id } = useParams()
   const history = useHistory()
 
@@ -28,7 +28,7 @@ export default function Thing({ toggleFavorit, favorites }) {
   }
 
   const title = removeFirstWordFromStationName(station_description)
-  const isStationFav = favorites.some((fav) => fav.thing_id === thing_id)
+  const isStationFav = isFavorite(thing_id)
 
   return (
     <Wrapper>
