@@ -11,26 +11,26 @@ export default function useFavorite() {
     localStorage.setItem('favorites', JSON.stringify(favorites))
   }, [favorites])
 
-  function toggleFavorit(id, newFavorite) {
-    if (isFavorite(id)) {
-      removeFavorite(id)
+  function toggleFavorit(thing_id, newFavorite) {
+    if (isFavorite(thing_id)) {
+      removeFavorite(thing_id)
     } else {
       addFavorite(newFavorite)
     }
   }
 
-  return { favorites, toggleFavorit }
+  return { favorites, toggleFavorit, isFavorite }
 
   // helper functions
 
-  function isFavorite(id) {
-    return (
-      favorites.filter((favorite) => favorite.dataStream_id === id).length > 0
+  function isFavorite(thing_id) {
+    return favorites.some(
+      (favorite) => Number(favorite.thing_id) === Number(thing_id)
     )
   }
 
-  function removeFavorite(id) {
-    setFavorites(favorites.filter((favorite) => favorite.dataStream_id !== id))
+  function removeFavorite(thing_id) {
+    setFavorites(favorites.filter((favorite) => favorite.thing_id !== thing_id))
   }
 
   function addFavorite(newFavorite) {

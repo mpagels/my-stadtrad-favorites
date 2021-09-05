@@ -9,34 +9,26 @@ import { IoReturnDownBack } from 'react-icons/io5'
 import { IconContext } from 'react-icons'
 import getLocalTime from '../utils/getLocalTime'
 
-export default function Thing({ toggleFavorit, favorites }) {
-  const { id } = useParams()
+export default function Thing({ toggleFavorit, isFavorite }) {
+  const { thing_id } = useParams()
   const history = useHistory()
 
-  const { isLoading, error, data } = useQuery(['fetchThing', id], () =>
-    fetchThing(id)
+  const { isLoading, error, data } = useQuery(['fetchThing', thing_id], () =>
+    fetchThing(thing_id)
   )
 
   if (isLoading) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
 
-  const {
-    station_description,
-    dataStream_id,
-    coordinates,
-    availableBikes,
-    lastUpdated,
-  } = data
+  const { station_description, coordinates, availableBikes, lastUpdated } = data
 
   function handleOnClick() {
-    toggleFavorit(dataStream_id, { ...data, id })
+    toggleFavorit(thing_id, { station_description, thing_id })
   }
 
   const title = removeFirstWordFromStationName(station_description)
-  const isStationFav = favorites.some(
-    (fav) => fav.dataStream_id === dataStream_id
-  )
+  const isStationFav = isFavorite(thing_id)
 
   return (
     <Wrapper>

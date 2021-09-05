@@ -3,8 +3,17 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import removeFirstWordFromStationName from '../../utils/formatStationDescription'
 
-export default function Result({ isFav, station_description, thing_id }) {
+export default function Result({
+  isFav,
+  station_description,
+  thing_id,
+  toggleFavorit,
+}) {
   const stationName = removeFirstWordFromStationName(station_description)
+
+  function handleOnClick() {
+    toggleFavorit(thing_id, { station_description, thing_id })
+  }
   return (
     <ResultWrapper>
       <Content>
@@ -18,7 +27,9 @@ export default function Result({ isFav, station_description, thing_id }) {
           <Button>Zur Station</Button>
         </Link>
       </Content>
-      <PlusSign isFav={isFav}>{isFav ? '✔' : '+'}</PlusSign>
+      <PlusSign onClick={handleOnClick} isFav={isFav}>
+        {isFav ? '✔' : '+'}
+      </PlusSign>
     </ResultWrapper>
   )
 }

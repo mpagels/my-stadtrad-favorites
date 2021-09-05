@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import AddFavorite from '../components/AddFavorite'
 import Favorite from '../components/Favorite'
 
-export default function Favorites({ favorites, toggleFavorit }) {
+export default function Favorites({ favorites, toggleFavorit, isFavorite }) {
   return (
     <Wrapper isNoFav={favorites.length === 0}>
       {favorites.length > 0 ? (
         favorites.map((fav) => (
           <Favorite
             key={fav.station_description}
-            id={fav.id}
+            thing_id={fav.thing_id}
             toggleFavorit={toggleFavorit}
           />
         ))

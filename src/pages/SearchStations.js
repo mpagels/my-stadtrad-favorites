@@ -6,9 +6,8 @@ import Result from '../components/Result/Result'
 import useInput from '../hooks/useInput'
 import fetchLocations from '../services/apiFetch'
 
-export default function SearchStations({ favorites }) {
+export default function SearchStations({ isFavorite, toggleFavorit }) {
   const { searchInput, handleOnChange } = useInput()
-  console.log(favorites)
   const { isLoading, error, data: locations } = useQuery(
     'locations',
     fetchLocations
@@ -41,10 +40,9 @@ export default function SearchStations({ favorites }) {
       <Result
         key={station_description}
         station_description={station_description}
-        isFav={favorites.some(
-          (fav) => Number(fav.thing_id) === Number(thing_id)
-        )}
+        isFav={isFavorite(thing_id)}
         thing_id={thing_id}
+        toggleFavorit={toggleFavorit}
       />
     )
   }

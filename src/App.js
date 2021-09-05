@@ -8,20 +8,27 @@ import Favorites from './pages/Favorites'
 import useFavorite from './hooks/useFavorite'
 
 function App() {
-  const { favorites, toggleFavorit } = useFavorite()
+  const { favorites, toggleFavorit, isFavorite } = useFavorite()
 
   return (
     <>
       <Header />
       <Switch>
-        <Route path="/thing/:id">
-          <Thing toggleFavorit={toggleFavorit} favorites={favorites} />
+        <Route path="/thing/:thing_id">
+          <Thing toggleFavorit={toggleFavorit} isFavorite={isFavorite} />
         </Route>
         <Route path="/search">
-          <SearchStations favorites={favorites} toggleFavorit={toggleFavorit} />
+          <SearchStations
+            isFavorite={isFavorite}
+            toggleFavorit={toggleFavorit}
+          />
         </Route>
         <Route path="/">
-          <Favorites favorites={favorites} toggleFavorit={toggleFavorit} />
+          <Favorites
+            favorites={favorites}
+            toggleFavorit={toggleFavorit}
+            isFavorite={isFavorite}
+          />
         </Route>
       </Switch>
       <FooterNavBar />

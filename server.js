@@ -38,11 +38,11 @@ app.get('/api/get-location', async (req, res) => {
   res.status(200).json(response)
 })
 
-app.get('/api/get-thing/:id', async (req, res) => {
-  const { id } = req.params
+app.get('/api/get-thing/:thing_id', async (req, res) => {
+  const { thing_id } = req.params
 
   const thing = await fetch(
-    `https://iot.hamburg.de/v1.0/Things(${id})/Datastreams`
+    `https://iot.hamburg.de/v1.0/Things(${thing_id})/Datastreams`
   ).then((res) => res.json())
 
   const dataStream_id = thing.value[0]['@iot.id']
@@ -66,7 +66,7 @@ app.get('/api/get-thing/:id', async (req, res) => {
     dataStream_id,
     availableBikes,
     lastUpdated,
-    thing_id: id,
+    thing_id,
   }
   res.status(200).json(response)
 })
