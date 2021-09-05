@@ -19,12 +19,12 @@ export default function useFavorite() {
     }
   }
 
-  return { favorites, toggleFavorit }
+  return { favorites, toggleFavorit, isFavorite }
 
   // helper functions
 
   function isFavorite(id) {
-    return favorites.filter((favorite) => favorite.thing_id === id).length > 0
+    return favorites.some((favorite) => favorite.thing_id === id)
   }
 
   function removeFavorite(id) {
