@@ -18,13 +18,13 @@ export default function Result({
     <ResultWrapper>
       <Content>
         <Title>StadtRad-Station</Title>
-        <StationName>{stationName}</StationName>
+        <StationName>{stationName.replace('/', ' / ')}</StationName>
         <Link
           to={{
             pathname: `/thing/${thing_id}`,
           }}
         >
-          <Button>Zur Station</Button>
+          <Button>Station anzeigen</Button>
         </Link>
       </Content>
       <PlusSign onClick={handleOnClick} isFav={isFav}>
@@ -36,12 +36,17 @@ export default function Result({
 
 const Button = styled.button`
   all: unset;
+  border: solid 1px #003063;
+  margin-top: 10px;
   cursor: pointer;
-  background-color: #5cabff; /*#0059b8; /* #004fa3; */
-  color: white;
+  color: #003063;
   padding: 0.7em 1.5em;
-  border-radius: 20px;
-  font-weight: 500;
+  border-radius: 10px;
+  font-weight: 600;
+  &:hover {
+    background-color: #5cabff; /*#0059b8; /* #004fa3; */
+    background-color: #ebebeb; /*#0059b8; /* #004fa3; */
+  }
 `
 
 const Content = styled.div`
@@ -52,11 +57,11 @@ const Content = styled.div`
 
 const ResultWrapper = styled.li`
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 2fr 1fr;
   align-items: center;
   color: #003063;
   padding: 2.2em 1.8em;
-  margin: 0;
+  margin: 20px 0;
   border-radius: 15px;
   font-size: 0.8em;
   text-align: center;
@@ -75,8 +80,8 @@ const PlusSign = styled.button`
   align-items: center;
   font-size: ${({ isFav }) => (isFav ? '2em' : '4em')};
   border-radius: 50%;
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   border: 5px solid ${({ isFav }) => (isFav ? '#1F6637' : '#003063')};
 `
 
@@ -91,5 +96,6 @@ const Title = styled.h2`
 const StationName = styled.h3`
   text-align: start;
   font-size: 1.3em;
-  margin: 0 0 0.6em 0; ;
+  margin: 0 0 0.6em 0;
+  overflow-wrap: break-word;
 `
