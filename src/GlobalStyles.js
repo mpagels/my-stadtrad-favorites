@@ -12,6 +12,10 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    text-decoration-line: none;
+}
+
 #root {
     display: grid;
     grid-template-rows: 75px auto;
