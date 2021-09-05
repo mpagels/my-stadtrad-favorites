@@ -14,7 +14,7 @@ function App() {
     <>
       <Header />
       <Switch>
-        <Route path="/thing/:id">
+        <Route path="/thing/:thing_id">
           <Thing toggleFavorit={toggleFavorit} favorites={favorites} />
         </Route>
         <Route path="/search">
