@@ -61,6 +61,7 @@ const ResultWrapper = styled.li`
   align-items: center;
   color: #003063;
   padding: 2.2em 1.8em;
+  background-color: white;
   margin: 20px 0;
   border-radius: 15px;
   font-size: 0.8em;
