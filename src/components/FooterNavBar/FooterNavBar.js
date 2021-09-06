@@ -1,30 +1,66 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { FiSearch } from 'react-icons/fi'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { IconContext } from 'react-icons'
 
 export default function FooterNavBar() {
   return (
     <Footer>
-      <Navigation>
-        <NavList>
-          <li>
-            <NavLink to="/">Meine Favoriten</NavLink>
-          </li>
-          <li>
-            <NavLink to="/search">Stationssuche</NavLink>
-          </li>
-        </NavList>
-      </Navigation>
+      <IconContext.Provider value={{ size: '2em', width: '100%' }}>
+        <Navigation>
+          <NavList>
+            <li>
+              <NavLink
+                to="/"
+                exact
+                activeStyle={{
+                  color: 'red',
+                }}
+              >
+                <ContentWrapper>
+                  <AiOutlineHeart />
+                  Meine Favoriten
+                </ContentWrapper>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/search"
+                activeStyle={{
+                  color: 'red',
+                }}
+              >
+                <ContentWrapper>
+                  <FiSearch />
+                  Stationssuche
+                </ContentWrapper>
+              </NavLink>
+            </li>
+          </NavList>
+        </Navigation>
+      </IconContext.Provider>
     </Footer>
   )
 }
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+`
 
 const Footer = styled.footer`
   position: fixed;
   bottom: 0px;
   right: 0px;
-  height: 75px;
+  left: 0px;
+  height: 90px;
   width: 100vw;
   background-color: white;
+  border-radius: 15px 15px 0 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -37,6 +73,7 @@ const Footer = styled.footer`
 `
 const Navigation = styled.nav`
   width: 100%;
+  height: 100%;
 `
 
 const NavList = styled.ul`
@@ -45,4 +82,6 @@ const NavList = styled.ul`
   align-items: center;
   list-style: none;
   padding: 0;
+  margin: 0;
+  height: 100%;
 `
