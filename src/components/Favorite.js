@@ -41,6 +41,8 @@ export default function Favorite({ thing_id, toggleFavorit }) {
         width={'auto'}
         zoomControl={false}
         hasZIndex={true}
+        scrollWheelZoom={false}
+        dragging={false}
       ></Map>
       <StationName>
         <Link to={`/thing/${thing_id}`}>{title}</Link>
