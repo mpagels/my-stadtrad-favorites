@@ -1,7 +1,12 @@
 import React from 'react'
+import { IconContext } from 'react-icons'
+import { IoArrowBackSharp } from 'react-icons/io5'
+import { Route, Switch, useHistory } from 'react-router'
 import styled from 'styled-components'
 
 export default function Header() {
+  const history = useHistory()
+
   return (
     <Switch>
       <Route exact path="/">
@@ -11,11 +16,24 @@ export default function Header() {
         <HeaderWrapper>Stationssuche</HeaderWrapper>
       </Route>
       <Route path="/thing">
+        <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+          <BackButton onClick={() => history.goBack()}>
+            <IoArrowBackSharp />
+          </BackButton>
+        </IconContext.Provider>
         <HeaderWrapper>Mein Favorit</HeaderWrapper>
       </Route>
     </Switch>
   )
 }
+
+const BackButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  left: 5%;
+  top: 20px;
+`
 
 const HeaderWrapper = styled.header`
   display: flex;

@@ -53,19 +53,9 @@ export default function Thing({ toggleFavorit, isFavorite }) {
           {isStationFav ? 'Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
         </FavoriteButton>
       </StationInfos>
-      <IconContext.Provider value={{ size: '2em' }}>
-        <BackButton onClick={() => history.goBack()}>
-          <IoReturnDownBack />
-        </BackButton>
-      </IconContext.Provider>
     </Wrapper>
   )
 }
-
-const BackButton = styled.button`
-  all: unset;
-  cursor: pointer;
-`
 
 const Blue = styled.div`
   position: absolute;
