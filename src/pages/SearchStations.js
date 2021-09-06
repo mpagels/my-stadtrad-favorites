@@ -70,4 +70,5 @@ const Wrapper = styled.div`
   height: 100%;
   overflow-y: hidden;
   gap: 20px;
+  background-color: #003063;
 `

@@ -33,4 +33,5 @@ const Wrapper = styled.div`
   margin: 0 auto;
   width: 100vw;
   justify-content: center;
+  background-color: #003063;
 `
