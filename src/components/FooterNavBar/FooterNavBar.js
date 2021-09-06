@@ -1,10 +1,20 @@
 import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { FiSearch } from 'react-icons/fi'
 import { AiOutlineHeart } from 'react-icons/ai'
+import { HiOutlineRefresh } from 'react-icons/hi'
+import { VscLoading } from 'react-icons/vsc'
 import { IconContext } from 'react-icons'
+import { useQueryClient } from 'react-query'
+import { useIsFetching } from 'react-query'
 
 export default function FooterNavBar() {
+  const queryClient = useQueryClient()
+  const isFetching = useIsFetching()
+  async function refetchAll() {
+    await queryClient.refetchQueries()
+  }
+
   return (
     <Footer>
       <IconContext.Provider value={{ size: '2em', width: '100%' }}>
@@ -24,6 +34,15 @@ export default function FooterNavBar() {
                 </ContentWrapper>
               </NavLink>
             </li>
+            <ListItem>
+              <RefreshButton onClick={refetchAll}>
+                {isFetching ? (
+                  <RotateLoadingSymbol size={'3em'} color={'#003063'} />
+                ) : (
+                  <HiOutlineRefresh size={'3em'} color={'#003063'} />
+                )}
+              </RefreshButton>
+            </ListItem>
             <li>
               <NavLink
                 to="/search"
@@ -54,6 +73,7 @@ const ContentWrapper = styled.div`
 
 const Footer = styled.footer`
   position: fixed;
+  z-index: 20;
   bottom: 0px;
   right: 0px;
   left: 0px;
@@ -71,6 +91,11 @@ const Footer = styled.footer`
     0 0px 33.4px -20px rgba(0, 0, 0, 0.309),
     0 0px 80px -20px rgba(0, 0, 0, 0.43);
 `
+
+const ListItem = styled.li`
+  position: absolute;
+  top: -45px;
+`
 const Navigation = styled.nav`
   width: 100%;
   height: 100%;
@@ -84,4 +109,30 @@ const NavList = styled.ul`
   padding: 0;
   margin: 0;
   height: 100%;
+`
+
+const RefreshButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 7px solid #003063;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+`
+
+const rotation = keyframes`
+from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+const RotateLoadingSymbol = styled(VscLoading)`
+  animation-name: ${rotation};
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
 `
