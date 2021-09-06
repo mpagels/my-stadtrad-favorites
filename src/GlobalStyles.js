@@ -14,6 +14,7 @@ body {
 
 a {
     text-decoration-line: none;
+    color: #003063;
 }
 
 #root {
