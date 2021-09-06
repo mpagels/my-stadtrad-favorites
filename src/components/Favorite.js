@@ -25,8 +25,10 @@ export default function Favorite({ thing_id, toggleFavorit }) {
     toggleFavorit(thing_id)
   }
 
+  const isBikeAvailable = availableBikes > 0
+
   return (
-    <FavoriteWrapper isAvailable={availableBikes > 0}>
+    <FavoriteWrapper isAvailable={isBikeAvailable}>
       <ButtonWrapper>
         <FavoriteButton onClick={handleClick}>
           <RiHeart3Fill />
@@ -44,7 +46,9 @@ export default function Favorite({ thing_id, toggleFavorit }) {
         <Link to={`/thing/${thing_id}`}>{title}</Link>
       </StationName>
       <div>
-        <Available>{availableBikes}</Available>
+        <Available isBikeAvailable={isBikeAvailable}>
+          {availableBikes}
+        </Available>
         <LastUpdated>{getLocalTime(lastUpdated)}</LastUpdated>
       </div>
     </FavoriteWrapper>
@@ -56,6 +60,7 @@ const Available = styled.p`
   font-size: 2em;
   margin: 0;
   font-weight: 800;
+  color: ${({ isBikeAvailable }) => (isBikeAvailable ? 'green' : 'red')};
 `
 
 const ButtonWrapper = styled.div`
@@ -68,7 +73,7 @@ const ButtonWrapper = styled.div`
 const FavoriteWrapper = styled.section`
   position: relative;
   background-color: ${({ isAvailable }) =>
-    isAvailable ? '#BDE7BD' : '#FFB6B3'};
+    isAvailable ? '#F8F8F8' : '#FFB6B3'};
   padding: 5px;
   border-radius: 15px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
