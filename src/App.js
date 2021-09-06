@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom'
-import FooterNavBar from './components/FooterNavBar'
+import FooterNavBar from './components/FooterNavBar/FooterNavBar'
 import Header from './components/Header'
 // eslint-disable-next-line no-unused-vars
 import SearchStations from './pages/SearchStations'
