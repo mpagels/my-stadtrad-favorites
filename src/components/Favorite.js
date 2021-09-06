@@ -25,8 +25,10 @@ export default function Favorite({ thing_id, toggleFavorit }) {
     toggleFavorit(thing_id)
   }
 
+  const isBikeAvailable = availableBikes > 0
+
   return (
-    <FavoriteWrapper isAvailable={availableBikes > 0}>
+    <FavoriteWrapper isAvailable={isBikeAvailable}>
       <ButtonWrapper>
         <FavoriteButton onClick={handleClick}>
           <RiHeart3Fill />
@@ -35,16 +37,20 @@ export default function Favorite({ thing_id, toggleFavorit }) {
       <Map
         coordinates={coordinates}
         zoomNumber={15}
-        height="150px"
+        height="110px"
         width={'auto'}
         zoomControl={false}
         hasZIndex={true}
+        scrollWheelZoom={false}
+        dragging={false}
       ></Map>
       <StationName>
         <Link to={`/thing/${thing_id}`}>{title}</Link>
       </StationName>
       <div>
-        <Available>{availableBikes}</Available>
+        <Available isBikeAvailable={isBikeAvailable}>
+          {availableBikes}
+        </Available>
         <LastUpdated>{getLocalTime(lastUpdated)}</LastUpdated>
       </div>
     </FavoriteWrapper>
@@ -55,6 +61,8 @@ const Available = styled.p`
   text-align: center;
   font-size: 2em;
   margin: 0;
+  font-weight: 800;
+  color: ${({ isBikeAvailable }) => (isBikeAvailable ? 'green' : 'red')};
 `
 
 const ButtonWrapper = styled.div`
@@ -67,10 +75,9 @@ const ButtonWrapper = styled.div`
 const FavoriteWrapper = styled.section`
   position: relative;
   background-color: ${({ isAvailable }) =>
-    isAvailable ? '#BDE7BD' : '#FFB6B3'};
+    isAvailable ? '#F8F8F8' : '#FFB6B3'};
   padding: 5px;
   border-radius: 15px;
-  height: 300px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
@@ -105,4 +112,8 @@ const StationName = styled.header`
   a {
     color: black;
   }
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

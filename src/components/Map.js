@@ -9,17 +9,21 @@ export default function Map({
   zoomControl = true,
   hasShadow = false,
   hasZIndex,
+  scrollWheelZoom = true,
+  dragging = true,
 }) {
   return (
     <MyMap
       center={[coordinates[0], coordinates[1]]}
       zoom={zoomNumber}
-      scrollWheelZoom={true}
+      scrollWheelZoom={scrollWheelZoom}
       height={height}
       width={width}
       hasShadow={hasShadow}
       zoomControl={zoomControl}
       hasZIndex={hasZIndex}
+      attributionControl={false}
+      dragging={dragging}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
