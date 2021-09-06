@@ -110,4 +110,8 @@ const StationName = styled.header`
   a {
     color: black;
   }
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
