@@ -20,6 +20,7 @@ export default function Map({
       hasShadow={hasShadow}
       zoomControl={zoomControl}
       hasZIndex={hasZIndex}
+      attributionControl={false}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
