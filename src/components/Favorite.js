@@ -125,7 +125,6 @@ const StationName = styled.header`
 `
 
 const Wrap = styled.div`
-  height: 247px;
   & span span {
     border-radius: 15px !important;
   }
