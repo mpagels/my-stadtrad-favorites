@@ -32,7 +32,7 @@ const BackButton = styled.button`
   cursor: pointer;
   position: absolute;
   left: 5%;
-  top: 20px;
+  top: 22px;
 `
 
 const HeaderWrapper = styled.header`

@@ -8,6 +8,7 @@ import removeFirstWordFromStationName from '../utils/formatStationDescription'
 import { IoReturnDownBack } from 'react-icons/io5'
 import { IconContext } from 'react-icons'
 import getLocalTime from '../utils/getLocalTime'
+import Skeleton from 'react-loading-skeleton'
 
 export default function Thing({ toggleFavorit, isFavorite }) {
   const { thing_id } = useParams()
@@ -17,41 +18,64 @@ export default function Thing({ toggleFavorit, isFavorite }) {
     fetchThing(thing_id)
   )
 
-  if (isLoading) return 'Loading...'
-
   if (error) return 'An error has occurred: ' + error.message
 
-  const { station_description, coordinates, availableBikes, lastUpdated } = data
+  const { station_description, coordinates, availableBikes, lastUpdated } =
+    data || {}
 
   function handleOnClick() {
     toggleFavorit(thing_id, { station_description, thing_id })
   }
 
-  const title = removeFirstWordFromStationName(station_description)
-  const isStationFav = isFavorite(thing_id)
+  const title = removeFirstWordFromStationName(station_description) || ''
+  const isStationFav = isFavorite(thing_id) || ''
 
   return (
     <Wrapper>
       <Blue />
-      <Map
-        coordinates={[coordinates[0], coordinates[1]]}
-        zoomNumber={18}
-        height="300px"
-        width="90%"
-        hasShadow={true}
-      ></Map>
+      {isLoading ? (
+        <Wrap width={'90%'}>
+          <Skeleton height="300px" />
+        </Wrap>
+      ) : (
+        <Map
+          coordinates={[coordinates[0], coordinates[1]]}
+          zoomNumber={18}
+          height="300px"
+          width="90%"
+          hasShadow={true}
+        ></Map>
+      )}
       <StationInfos>
-        <Title>{title}</Title>
+        <Title>
+          {isLoading ? <Skeleton height="30px" width="300px" /> : title}
+        </Title>
         <LastUpdated>
-          Zuletzt geupdated: {getLocalTime(lastUpdated)}
+          {isLoading ? (
+            <Skeleton height="10px" />
+          ) : (
+            `Zuletzt geupdated: ${getLocalTime(lastUpdated)}`
+          )}
         </LastUpdated>
         <Bikes>
-          <Count>{availableBikes}</Count>
-          Fahrräder
+          {isLoading ? (
+            <Skeleton height="30px" width="150px" />
+          ) : (
+            <>
+              <Count>{availableBikes}</Count>
+              Fahrräder
+            </>
+          )}
         </Bikes>
-        <FavoriteButton onClick={handleOnClick} isStationFav={isStationFav}>
-          {isStationFav ? 'Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
-        </FavoriteButton>
+        {isLoading ? (
+          <Wrap width="90%">
+            <Skeleton height="40px" />
+          </Wrap>
+        ) : (
+          <FavoriteButton onClick={handleOnClick} isStationFav={isStationFav}>
+            {isStationFav ? 'Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+          </FavoriteButton>
+        )}
       </StationInfos>
     </Wrapper>
   )
@@ -68,6 +92,9 @@ const Blue = styled.div`
 const Bikes = styled.p`
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: center;
+  height: 20px;
 `
 
 const Count = styled.span`
@@ -90,6 +117,8 @@ const LastUpdated = styled.h3`
   font-size: 0.6em;
   font-weight: 700;
   margin: 0;
+  text-align: center;
+  width: 100%;
 `
 const StationInfos = styled.section`
   display: flex;
@@ -101,6 +130,7 @@ const StationInfos = styled.section`
 const Title = styled.h2`
   font-size: 1.2em;
   text-align: center;
+  width: 100%;
 `
 
 const Wrapper = styled.div`
@@ -109,4 +139,14 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
+`
+
+const Wrap = styled.div`
+  & span span {
+    border-radius: 15px !important;
+  }
+  width: ${({ width }) => width};
+  box-shadow: 0 5.9px 5.4px -84px rgba(0, 0, 0, 0.133),
+    0 19.7px 18.1px -84px rgba(0, 0, 0, 0.197),
+    0 88px 81px -84px rgba(0, 0, 0, 0.33);
 `

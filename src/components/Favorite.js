@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Map from '../components/Map'
+import Skeleton from 'react-loading-skeleton'
 import { useQuery } from 'react-query'
 import { fetchThing } from '../services/apiFetch'
 import { Link } from 'react-router-dom'
@@ -13,7 +14,12 @@ export default function Favorite({ thing_id, toggleFavorit }) {
     fetchThing(thing_id)
   )
 
-  if (isLoading) return 'Loading...'
+  if (isLoading)
+    return (
+      <Wrap>
+        <Skeleton height="245px" />
+      </Wrap>
+    )
 
   if (error) return 'An error has occurred: ' + error.message
 
@@ -116,4 +122,13 @@ const StationName = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
+`
+
+const Wrap = styled.div`
+  & span span {
+    border-radius: 15px !important;
+  }
+  box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02), 0 0px 5.3px rgba(0, 0, 0, 0.028),
+    0 0px 10px rgba(0, 0, 0, 0.035), 0 0px 17.9px rgba(0, 0, 0, 0.042),
+    0 0px 33.4px rgba(0, 0, 0, 0.05), 0 0px 80px rgba(0, 0, 0, 0.07);
 `
