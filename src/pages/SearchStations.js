@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import styled from 'styled-components'
+import Skeleton from 'react-loading-skeleton'
 import Input from '../components/Input/Input'
 import Result from '../components/Result/Result'
 import useInput from '../hooks/useInput'
@@ -19,15 +20,13 @@ export default function SearchStations({ isFavorite, toggleFavorit }) {
     <Wrapper>
       <Input inputValue={searchInput} updateInput={updateInput} />
       <ResultWrapper>
-        {isLoading ? (
-          'loading'
-        ) : (
-          <ResultList>
-            {locations
-              .filter(isLocationInSearchInput)
-              .map(renderFilteredLocations)}
-          </ResultList>
-        )}
+        <ResultList>
+          {isLoading
+            ? renderSkeletonResultList()
+            : locations
+                .filter(isLocationInSearchInput)
+                .map(renderFilteredLocations)}
+        </ResultList>
       </ResultWrapper>
     </Wrapper>
   )
@@ -52,6 +51,14 @@ export default function SearchStations({ isFavorite, toggleFavorit }) {
       />
     )
   }
+
+  function renderSkeletonResultList() {
+    return ['', '', '', '', '', ''].map((_) => (
+      <Wrap>
+        <Skeleton height="170px" />
+      </Wrap>
+    ))
+  }
 }
 
 const ResultWrapper = styled.div`
@@ -71,4 +78,13 @@ const Wrapper = styled.div`
   overflow-y: hidden;
   gap: 20px;
   background-color: #003063;
+`
+
+const Wrap = styled.li`
+  margin: 20px 0;
+  & span span {
+    border-radius: 15px !important;
+  }
+  box-shadow: 0 0.3px 1.7px rgba(0, 0, 0, 0.04),
+    0 0.9px 5.6px rgba(0, 0, 0, 0.06), 0 4px 25px rgba(0, 0, 0, 0.1);
 `
