@@ -29,3 +29,6 @@ yarn-error.log*
 
 #git
 /.git-old
+
+# python
+venv
