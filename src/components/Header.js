@@ -15,6 +15,14 @@ export default function Header() {
       <Route path="/search">
         <HeaderWrapper>Stationssuche</HeaderWrapper>
       </Route>
+      <Route path="/settings">
+        <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+          <BackButton onClick={() => history.goBack()}>
+            <IoArrowBackSharp />
+          </BackButton>
+        </IconContext.Provider>
+        <HeaderWrapper>Einstellungen</HeaderWrapper>
+      </Route>
       <Route path="/thing">
         <IconContext.Provider value={{ size: '2em', color: 'white' }}>
           <BackButton onClick={() => history.goBack()}>
