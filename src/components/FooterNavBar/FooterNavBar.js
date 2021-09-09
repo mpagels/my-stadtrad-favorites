@@ -1,8 +1,8 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Switch, Route, Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { FiSearch } from 'react-icons/fi'
 import { AiOutlineHeart } from 'react-icons/ai'
-import { HiOutlineRefresh } from 'react-icons/hi'
+import { HiOutlineRefresh, HiOutlineHome } from 'react-icons/hi'
 import { VscLoading } from 'react-icons/vsc'
 import { IconContext } from 'react-icons'
 import { useQueryClient } from 'react-query'
@@ -35,13 +35,22 @@ export default function FooterNavBar() {
               </NavLink>
             </li>
             <ListItem>
-              <RefreshButton onClick={refetchAll}>
-                {isFetching ? (
-                  <RotateLoadingSymbol size={'3em'} color={'#003063'} />
-                ) : (
-                  <HiOutlineRefresh size={'3em'} color={'#003063'} />
-                )}
-              </RefreshButton>
+              <Switch>
+                <Route path="/settings">
+                  <Circle to="/">
+                    <HiOutlineHome size={'3em'} color={'#003063'} />
+                  </Circle>
+                </Route>
+                <Route path="/">
+                  <RefreshButton onClick={refetchAll}>
+                    {isFetching ? (
+                      <RotateLoadingSymbol size={'3em'} color={'#003063'} />
+                    ) : (
+                      <HiOutlineRefresh size={'3em'} color={'#003063'} />
+                    )}
+                  </RefreshButton>
+                </Route>
+              </Switch>
             </ListItem>
             <li>
               <NavLink
@@ -62,6 +71,23 @@ export default function FooterNavBar() {
     </Footer>
   )
 }
+
+const Circle = styled(Link)`
+  all: unset;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 7px solid #003063;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 0px 2.2px -20px rgba(0, 0, 0, 0.121),
+    0 0px 5.3px -20px rgba(0, 0, 0, 0.174),
+    0 0px 10px -20px rgba(0, 0, 0, 0.215),
+    0 0px 17.9px -20px rgba(0, 0, 0, 0.256),
+    0 0px 33.4px -20px rgba(0, 0, 0, 0.309),
+    0 0px 80px -20px rgba(0, 0, 0, 0.43);
+`
 
 const ContentWrapper = styled.div`
   display: flex;
