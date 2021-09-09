@@ -27,13 +27,7 @@ def fetch_data(start_url):
     return data
 
 
-ALL_LOCATIONS = "https://iot.hamburg.de/v1.0/Things?$filter=Datastreams/properties/serviceName%20eq%20%27HH_STA_StadtRad%27&$orderby=id&$count=true&$expand=Locations"
-
-LIST_OF_ALL_LOCATIONS = fetch_data(ALL_LOCATIONS)
-
-# save_to_file(LIST_OF_ALL_LOCATIONS)
-
-for location in LIST_OF_ALL_LOCATIONS[0:1]:
+def extract_data_from(location):
     description = location["description"]
     thing_id = location["@iot.id"]
     location_geometry = location["Locations"][0]["location"]["geometry"]["coordinates"]
@@ -47,7 +41,7 @@ for location in LIST_OF_ALL_LOCATIONS[0:1]:
 
     historical_data = fetch_data(extract_url)
 
-    obj_to_save = {
+    return {
         "description": description,
         "thing_id": thing_id,
         "location_geometry": location_geometry,
@@ -55,4 +49,14 @@ for location in LIST_OF_ALL_LOCATIONS[0:1]:
         "get_datastream_url": get_datastream_url,
         "historical_data": historical_data,
     }
+
+
+ALL_LOCATIONS = "https://iot.hamburg.de/v1.0/Things?$filter=Datastreams/properties/serviceName%20eq%20%27HH_STA_StadtRad%27&$orderby=id&$count=true&$expand=Locations"
+
+LIST_OF_ALL_LOCATIONS = fetch_data(ALL_LOCATIONS)
+
+# save_to_file(LIST_OF_ALL_LOCATIONS)
+
+for location in LIST_OF_ALL_LOCATIONS[0:1]:
+    obj_to_save = extract_data_from(location)
     save_to_file(obj_to_save)
