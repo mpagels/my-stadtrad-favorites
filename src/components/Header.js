@@ -1,7 +1,8 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
-import { IoArrowBackSharp } from 'react-icons/io5'
+import { IoArrowBackSharp, IoSettingsOutline } from 'react-icons/io5'
 import { Route, Switch, useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export default function Header() {
@@ -10,9 +11,19 @@ export default function Header() {
   return (
     <Switch>
       <Route exact path="/">
+        <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+          <SettingButton to="/settings">
+            <IoSettingsOutline />
+          </SettingButton>
+        </IconContext.Provider>
         <HeaderWrapper>Meine Favoriten</HeaderWrapper>
       </Route>
       <Route path="/search">
+        <IconContext.Provider value={{ size: '2em', color: 'white' }}>
+          <SettingButton to="/settings">
+            <IoSettingsOutline />
+          </SettingButton>
+        </IconContext.Provider>
         <HeaderWrapper>Stationssuche</HeaderWrapper>
       </Route>
       <Route path="/settings">
@@ -28,6 +39,9 @@ export default function Header() {
           <BackButton onClick={() => history.goBack()}>
             <IoArrowBackSharp />
           </BackButton>
+          <SettingButton to="/settings">
+            <IoSettingsOutline />
+          </SettingButton>
         </IconContext.Provider>
         <HeaderWrapper>Mein Favorit</HeaderWrapper>
       </Route>
@@ -40,6 +54,14 @@ const BackButton = styled.button`
   cursor: pointer;
   position: absolute;
   left: 5%;
+  top: 22px;
+`
+
+const SettingButton = styled(Link)`
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
   top: 22px;
 `
 
