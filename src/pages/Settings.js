@@ -18,4 +18,5 @@ const PageWrapper = styled.div`
   background-color: #003063;
   color: white;
   padding: 20px 20px 140px 20px;
+  overflow-y: scroll;
 `
