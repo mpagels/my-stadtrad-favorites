@@ -6,6 +6,7 @@ import SearchStations from './pages/SearchStations'
 import Thing from './pages/Thing'
 import Favorites from './pages/Favorites'
 import useFavorite from './hooks/useFavorite'
+import Settings from './pages/Settings'
 
 function App() {
   const { favorites, toggleFavorit, isFavorite } = useFavorite()
@@ -22,6 +23,9 @@ function App() {
             isFavorite={isFavorite}
             toggleFavorit={toggleFavorit}
           />
+        </Route>
+        <Route path="/settings">
+          <Settings />
         </Route>
         <Route path="/">
           <Favorites
