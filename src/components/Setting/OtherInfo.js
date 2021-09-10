@@ -5,7 +5,7 @@ import SettingItem from './SettingItem'
 export default function OtherInfo() {
   return (
     <Wrapper>
-      <SettingTitle>Andere Infos</SettingTitle>
+      <SettingTitle>Weitere Infos</SettingTitle>
       <SettingsList>
         <SettingItem title="Source-Code">
           Das Project ist Open Source. <br />
