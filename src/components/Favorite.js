@@ -9,7 +9,11 @@ import { RiHeart3Fill } from 'react-icons/ri'
 import removeFirstWordFromStationName from '../utils/formatStationDescription'
 import getLocalTime from '../utils/getLocalTime'
 
+import { useAvailability } from '../contenxt/SettingContext'
+
 export default function Favorite({ thing_id, toggleFavorit }) {
+  const availability = useAvailability()
+
   const { isLoading, error, data } = useQuery(['fetchThing', thing_id], () =>
     fetchThing(thing_id)
   )
@@ -31,7 +35,7 @@ export default function Favorite({ thing_id, toggleFavorit }) {
     toggleFavorit(thing_id)
   }
 
-  const isBikeAvailable = availableBikes > 0
+  const { isBikeAvailable, availableColor } = getAvailabilityInfos()
 
   return (
     <FavoriteWrapper isAvailable={isBikeAvailable}>
@@ -54,13 +58,30 @@ export default function Favorite({ thing_id, toggleFavorit }) {
         <Link to={`/thing/${thing_id}`}>{title}</Link>
       </StationName>
       <div>
-        <Available isBikeAvailable={isBikeAvailable}>
-          {availableBikes}
-        </Available>
+        <Available availableColor={availableColor}>{availableBikes}</Available>
         <LastUpdated>{getLocalTime(lastUpdated)}</LastUpdated>
       </div>
     </FavoriteWrapper>
   )
+
+  // helper function
+
+  function getAvailabilityInfos() {
+    const isBikeAvailable = availableBikes > 0
+
+    let availableColor
+
+    if (isBikeAvailable) {
+      if (availableBikes <= Number(availability)) {
+        availableColor = '#eda31d'
+      } else {
+        availableColor = 'green'
+      }
+    } else {
+      availableColor = 'red'
+    }
+    return { isBikeAvailable, availableColor }
+  }
 }
 
 const Available = styled.p`
@@ -68,7 +89,7 @@ const Available = styled.p`
   font-size: 2em;
   margin: 0;
   font-weight: 800;
-  color: ${({ isBikeAvailable }) => (isBikeAvailable ? 'green' : 'red')};
+  color: ${({ availableColor }) => availableColor};
 `
 
 const ButtonWrapper = styled.div`

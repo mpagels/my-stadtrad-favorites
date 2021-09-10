@@ -1,12 +1,12 @@
-import { useState } from 'react'
 import styled from 'styled-components'
+import {
+  useAvailability,
+  useChangeAvailability,
+} from '../../contenxt/SettingContext'
 
 export default function Availability() {
-  const [activeButton, setActiveButton] = useState('X')
-
-  function handleOnClick(button) {
-    setActiveButton(button)
-  }
+  const availability = useAvailability()
+  const changeAvailability = useChangeAvailability()
 
   const buttons = ['X', '1', '2', '3', '4', '5']
   return (
@@ -14,8 +14,8 @@ export default function Availability() {
       {buttons.map((button) => (
         <Button
           key={button}
-          onClick={() => handleOnClick(button)}
-          isActive={button === activeButton}
+          onClick={() => changeAvailability(button)}
+          isActive={button === availability}
         >
           {button}
         </Button>
