@@ -1,22 +1,22 @@
 import React from 'react'
 import Map from '../components/Map'
 import { useQuery } from 'react-query'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { fetchThing } from '../services/apiFetch'
 import removeFirstWordFromStationName from '../utils/formatStationDescription'
-import { IoReturnDownBack } from 'react-icons/io5'
-import { IconContext } from 'react-icons'
 import getLocalTime from '../utils/getLocalTime'
 import Skeleton from 'react-loading-skeleton'
+import { useAvailability } from '../contenxt/SettingContext'
 
 export default function Thing({ toggleFavorit, isFavorite }) {
   const { thing_id } = useParams()
-  const history = useHistory()
 
   const { isLoading, error, data } = useQuery(['fetchThing', thing_id], () =>
     fetchThing(thing_id)
   )
+
+  const availability = useAvailability()
 
   if (error) return 'An error has occurred: ' + error.message
 
@@ -29,7 +29,7 @@ export default function Thing({ toggleFavorit, isFavorite }) {
 
   const title = removeFirstWordFromStationName(station_description) || ''
   const isStationFav = isFavorite(thing_id) || ''
-
+  const { availableColor } = getAvailabilityInfos()
   return (
     <Wrapper>
       <Blue />
@@ -62,7 +62,7 @@ export default function Thing({ toggleFavorit, isFavorite }) {
             <Skeleton height="30px" width="150px" />
           ) : (
             <>
-              <Count>{availableBikes}</Count>
+              <Count availableColor={availableColor}>{availableBikes}</Count>
               Fahrräder
             </>
           )}
@@ -79,6 +79,25 @@ export default function Thing({ toggleFavorit, isFavorite }) {
       </StationInfos>
     </Wrapper>
   )
+
+  // helper function
+
+  function getAvailabilityInfos() {
+    const isBikeAvailable = availableBikes > 0
+
+    let availableColor
+
+    if (isBikeAvailable) {
+      if (availableBikes <= Number(availability)) {
+        availableColor = '#eda31d'
+      } else {
+        availableColor = 'green'
+      }
+    } else {
+      availableColor = 'red'
+    }
+    return { isBikeAvailable, availableColor }
+  }
 }
 
 const Blue = styled.div`
@@ -101,6 +120,7 @@ const Count = styled.span`
   font-size: 1.4em;
   font-weight: 700;
   margin: 0 5px;
+  color: ${({ availableColor }) => availableColor};
 `
 
 const FavoriteButton = styled.button`

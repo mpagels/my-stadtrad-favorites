@@ -53,8 +53,8 @@ export default function SearchStations({ isFavorite, toggleFavorit }) {
   }
 
   function renderSkeletonResultList() {
-    return ['', '', '', '', '', ''].map((_) => (
-      <Wrap>
+    return ['', '', '', '', '', ''].map((_, index) => (
+      <Wrap key={index}>
         <Skeleton height="170px" />
       </Wrap>
     ))
