@@ -1,19 +1,16 @@
 import React from 'react'
 import Map from '../components/Map'
 import { useQuery } from 'react-query'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { fetchThing } from '../services/apiFetch'
 import removeFirstWordFromStationName from '../utils/formatStationDescription'
-import { IoReturnDownBack } from 'react-icons/io5'
-import { IconContext } from 'react-icons'
 import getLocalTime from '../utils/getLocalTime'
 import Skeleton from 'react-loading-skeleton'
 import { useAvailability } from '../contenxt/SettingContext'
 
 export default function Thing({ toggleFavorit, isFavorite }) {
   const { thing_id } = useParams()
-  const history = useHistory()
 
   const { isLoading, error, data } = useQuery(['fetchThing', thing_id], () =>
     fetchThing(thing_id)
