@@ -1,4 +1,4 @@
-import { useContext, useState, createContext } from 'react'
+import { useContext, useState, createContext, useEffect } from 'react'
 
 export const SettingContext = createContext({
   availability: 'X',
@@ -6,7 +6,13 @@ export const SettingContext = createContext({
 })
 
 export function SettingContextProvider({ children }) {
-  const [availability, setAvailability] = useState('X')
+  const [availability, setAvailability] = useState(
+    JSON.parse(localStorage.getItem('availabilitySetting')) || 'X'
+  )
+
+  useEffect(() => {
+    localStorage.setItem('availabilitySetting', JSON.stringify(availability))
+  }, [availability])
 
   function changeAvailability(availability) {
     setAvailability(availability)
