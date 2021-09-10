@@ -7,12 +7,13 @@ import Thing from './pages/Thing'
 import Favorites from './pages/Favorites'
 import useFavorite from './hooks/useFavorite'
 import Settings from './pages/Settings'
+import { SettingContextProvider } from './contenxt/SettingContext'
 
 function App() {
   const { favorites, toggleFavorit, isFavorite } = useFavorite()
 
   return (
-    <>
+    <SettingContextProvider>
       <Header />
       <Switch>
         <Route path="/thing/:thing_id">
@@ -36,7 +37,7 @@ function App() {
         </Route>
       </Switch>
       <FooterNavBar />
-    </>
+    </SettingContextProvider>
   )
 }
 
