@@ -75,6 +75,6 @@ function getLocationPoints(thing) {
   const coordinates = thing.value[0].observedArea.coordinates
   const isArray = Array.isArray(coordinates[1])
   if (isArray) {
-    return thing.value[0].observedArea.coordinates[1]
-  } else return thing.value[0].observedArea.coordinates
+    return coordinates[1]
+  } else return coordinates
 }
