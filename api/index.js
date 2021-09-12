@@ -53,7 +53,7 @@ app.get('/api/get-thing/:thing_id', async (req, res) => {
   const availableBikes = getAvailablesBikes.value[0].result
   const lastUpdated = getAvailablesBikes.value[0].phenomenonTime
 
-  const [lat, long] = thing.value[0].observedArea.coordinates[1]
+  const [lat, long] = getLocationPoints(thing)
 
   const response = {
     station_description: getThingName.description,
@@ -67,3 +67,11 @@ app.get('/api/get-thing/:thing_id', async (req, res) => {
 })
 
 module.exports = app
+
+function getLocationPoints(thing) {
+  const coordinates = thing.value[0].observedArea.coordinates
+  const isArray = Array.isArray(coordinates[1])
+  if (isArray) {
+    return thing.value[0].observedArea.coordinates[1]
+  } else return thing.value[0].observedArea.coordinates
+}
