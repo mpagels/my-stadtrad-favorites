@@ -48,23 +48,26 @@
 
 ![App main screen](docs/screen_1.png)
 ![App main screen](docs/screen_2.png)
+
 ![App main screen](docs/screen_3.png)
+![App main screen](docs/screen_4.png)
 
-I recently found out that my hometown has these internet of things api which gives back the information of the StadradHH service. Every 5min the api is updated. In the last time I'm using the service quite often and the offical app did not provide a "save your favorite station" feature. And the app is sometimes not showing the availables bikes.
+I recently found out that my hometown has these internet of things api which gives back the information of the StadradHH service. In the last time I'm using the bike service quite often and the offical booking app did not provide a "save your favorite station" feature. And the officeal app is sometimes not showing the availables bikes.
 
-Right now the app let you search for every bike station in Hamburg and let you save the station. React-query is updating the data when you come back to the app.
+Right now the `my-stadtRAD-favorite` app let you search for every bike station in Hamburg and let you save it as a favorite. React-query is updating the data when you come back to the app or you click the refesh button.
 
-The IOT api is quite big and powerful. To handle all the data I wrote a BFF (backend for frontend) that handles all the necessary fetching and just send the data backt to react frontend that is needed.
+The IOT api is quite big and powerful. To handle all the data I wrote a BFF (backend for frontend) that handles all the necessary fetching and just send the data back to a react frontend that is needed.
 
 The App is deployed on vercel. The express server is served as well with vercel as serverless functions.
 
 ### Features
 
-- Find every StadtRAD station
+- Find every StadtRAD station in Hamburg
 - Inspect every StadtRAD station with map and available bikes
 - Every station is updated every 5 minutes
 - save StadtRAD station in a favorite list
 - See saved stations in a small dashboard (updates automatically)
+- save number, when app should show when few bicycles are available
 
 ### Built With
 
@@ -92,15 +95,11 @@ To get a local copy up and running follow these simple steps.
    ```sh
    npm install
    ```
-3. Work with express.js in local development, add this line to your `package.json` file
-   ```json
-   "proxy": "http://localhost:5000/"
-   ```
-4. Run express.js server
+3. Work with express.js in local development run express.js server
    ```sh
    npm run api
    ```
-5. Start react
+4. Start react
    ```sh
    npm start
    ```
