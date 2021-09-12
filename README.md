@@ -48,7 +48,9 @@
 
 ![App main screen](docs/screen_1.png)
 ![App main screen](docs/screen_2.png)
+
 ![App main screen](docs/screen_3.png)
+![App main screen](docs/screen_4.png)
 
 I recently found out that my hometown has these internet of things api which gives back the information of the StadradHH service. Every 5min the api is updated. In the last time I'm using the service quite often and the offical app did not provide a "save your favorite station" feature. And the app is sometimes not showing the availables bikes.
 
