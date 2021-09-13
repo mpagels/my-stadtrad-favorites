@@ -30,6 +30,7 @@ export default function Thing({ toggleFavorit, isFavorite }) {
   const title = removeFirstWordFromStationName(station_description) || ''
   const isStationFav = isFavorite(thing_id) || ''
   const { availableColor } = getAvailabilityInfos()
+  const isPlural = getIsPlural(availableBikes)
   return (
     <Wrapper>
       <Blue />
@@ -63,7 +64,7 @@ export default function Thing({ toggleFavorit, isFavorite }) {
           ) : (
             <>
               <Count availableColor={availableColor}>{availableBikes}</Count>
-              Fahrräder
+              {isPlural ? 'Fahrräder' : 'Fahrrad'}
             </>
           )}
         </Bikes>
@@ -97,6 +98,10 @@ export default function Thing({ toggleFavorit, isFavorite }) {
       availableColor = 'red'
     }
     return { isBikeAvailable, availableColor }
+  }
+
+  function getIsPlural(availableBikes) {
+    return availableBikes !== 1
   }
 }
 
