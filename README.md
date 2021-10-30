@@ -51,6 +51,7 @@
 
 ![App main screen](docs/screen_3.png)
 ![App main screen](docs/screen_4.png)
+![App main screen](docs/screen_5.png)
 
 I recently found out that my hometown has these internet of things api which gives back the information of the StadradHH service. In the last time I'm using the bike service quite often and the offical booking app did not provide a "save your favorite station" feature. And the officeal app is sometimes not showing the availables bikes.
 
@@ -68,6 +69,7 @@ The App is deployed on vercel. The express server is served as well with vercel 
 - save StadtRAD station in a favorite list
 - See saved stations in a small dashboard (updates automatically)
 - save number, when app should show when few bicycles are available
+- Internationalization (German/English)
 
 ### Built With
 
@@ -78,7 +80,9 @@ The App is deployed on vercel. The express server is served as well with vercel 
 - leatlef-react
 - dayjs
 - styled-components
+- lingui-js
 - StadtRADHH API
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
