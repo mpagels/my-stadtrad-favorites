@@ -8,6 +8,7 @@ import removeFirstWordFromStationName from '../utils/formatStationDescription'
 import getLocalTime from '../utils/getLocalTime'
 import Skeleton from 'react-loading-skeleton'
 import { useAvailability } from '../contenxt/SettingContext'
+import { t } from '@lingui/macro'
 
 export default function Thing({ toggleFavorit, isFavorite }) {
   const { thing_id } = useParams()
@@ -55,7 +56,7 @@ export default function Thing({ toggleFavorit, isFavorite }) {
           {isLoading ? (
             <Skeleton height="10px" />
           ) : (
-            `Zuletzt geupdated: ${getLocalTime(lastUpdated)}`
+            t`Zuletzt geupdated: ` + `${getLocalTime(lastUpdated)}`
           )}
         </LastUpdated>
         <Bikes>
@@ -64,7 +65,7 @@ export default function Thing({ toggleFavorit, isFavorite }) {
           ) : (
             <>
               <Count availableColor={availableColor}>{availableBikes}</Count>
-              {isPlural ? 'Fahrräder' : 'Fahrrad'}
+              {isPlural ? t`Fahrräder` : t`Fahrrad`}
             </>
           )}
         </Bikes>
@@ -74,7 +75,7 @@ export default function Thing({ toggleFavorit, isFavorite }) {
           </Wrap>
         ) : (
           <FavoriteButton onClick={handleOnClick} isStationFav={isStationFav}>
-            {isStationFav ? 'Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+            {isStationFav ? t`Favoriten entfernen` : t`Zu Favoriten hinzufügen`}
           </FavoriteButton>
         )}
       </StationInfos>

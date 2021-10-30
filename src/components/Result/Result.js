@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -17,14 +18,18 @@ export default function Result({
   return (
     <ResultWrapper>
       <Content>
-        <Title>StadtRad-Station</Title>
+        <Title>
+          <Trans>StadtRad-Station</Trans>
+        </Title>
         <StationName>{stationName.replace('/', ' / ')}</StationName>
         <Link
           to={{
             pathname: `/thing/${thing_id}`,
           }}
         >
-          <Button>Station anzeigen</Button>
+          <Button>
+            <Trans>Station anzeigen</Trans>
+          </Button>
         </Link>
       </Content>
       <PlusSign onClick={handleOnClick} isFav={isFav}>

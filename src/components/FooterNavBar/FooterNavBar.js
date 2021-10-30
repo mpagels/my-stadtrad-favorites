@@ -7,6 +7,7 @@ import { VscLoading } from 'react-icons/vsc'
 import { IconContext } from 'react-icons'
 import { useQueryClient } from 'react-query'
 import { useIsFetching } from 'react-query'
+import { Trans } from '@lingui/macro'
 
 export default function FooterNavBar() {
   const queryClient = useQueryClient()
@@ -30,7 +31,7 @@ export default function FooterNavBar() {
               >
                 <ContentWrapper>
                   <AiOutlineHeart />
-                  Meine Favoriten
+                  <Trans>Meine Favoriten</Trans>
                 </ContentWrapper>
               </NavLink>
             </li>
@@ -61,7 +62,7 @@ export default function FooterNavBar() {
               >
                 <ContentWrapper>
                   <FiSearch />
-                  Stationssuche
+                  <Trans>Stationssuche</Trans>
                 </ContentWrapper>
               </NavLink>
             </li>

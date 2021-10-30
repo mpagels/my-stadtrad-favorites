@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { RiSearchLine, RiCloseCircleFill } from 'react-icons/ri'
 import { IconContext } from 'react-icons'
+import { t } from '@lingui/macro'
 
 export default function Input({ inputValue, updateInput }) {
   function handleOnChange(event) {
@@ -15,7 +16,7 @@ export default function Input({ inputValue, updateInput }) {
   return (
     <InputWrapper>
       <StyledInput
-        placeholder="Station suchen"
+        placeholder={t`Station suchen`}
         value={inputValue}
         onChange={handleOnChange}
       />

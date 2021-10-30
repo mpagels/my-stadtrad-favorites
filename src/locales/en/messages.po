@@ -49,6 +49,18 @@ msgstr "Settings"
 #~ msgid "Englisch"
 #~ msgstr "English"
 
+#: src/pages/Thing.js:68
+msgid "Fahrrad"
+msgstr "bike"
+
+#: src/pages/Thing.js:68
+msgid "Fahrräder"
+msgstr "bikes"
+
+#: src/pages/Thing.js:78
+msgid "Favoriten entfernen"
+msgstr "Remove from favorites"
+
 #: src/components/Setting/OtherInfo.js:61
 msgid "Hi 👋, ich bin Martin Pagels, begeisterter Programmierer - und neuerdings Fahradfahrer. Mit dieser kleinen App optimiere ich die StadtRAD App nach meinen Bedürfnissen. Wenn du Lust hast, connecte dich gerne mit mir."
 msgstr "Hi 👋, I'm Martin Pagels, a enthusiastic programmer - and recently bicycle rider. With this little app I'm optimizing the StadtRAD app according to my needs. If you like it, feel free to connect with me."
@@ -56,6 +68,10 @@ msgstr "Hi 👋, I'm Martin Pagels, a enthusiastic programmer - and recently bic
 #: src/components/Setting/General.js:14
 msgid "Hinweis bei geringer Verfügbarkeit"
 msgstr "Note for low availability"
+
+#: src/components/AddFavorite.js:13
+msgid "Keine Favoriten gespeichert"
+msgstr "No favorites saved"
 
 #: src/components/Setting/OtherInfo.js:60
 msgid "Kontakt"
@@ -65,6 +81,7 @@ msgstr "Contact"
 msgid "Mein Favorit"
 msgstr "My favorite"
 
+#: src/components/FooterNavBar/FooterNavBar.js:34
 #: src/components/Header.js:21
 msgid "Meine Favoriten"
 msgstr "My favorites"
@@ -77,6 +94,19 @@ msgstr "Write me"
 msgid "Spracheinstellung"
 msgstr "Language settings"
 
+#: src/components/Result/Result.js:22
+msgid "StadtRad-Station"
+msgstr "StadtRad station"
+
+#: src/components/Result/Result.js:31
+msgid "Station anzeigen"
+msgstr "Show station"
+
+#: src/components/Input/Input.js:19
+msgid "Station suchen"
+msgstr "Search station"
+
+#: src/components/FooterNavBar/FooterNavBar.js:65
 #: src/components/Header.js:31
 msgid "Stationssuche"
 msgstr "Search station"
@@ -84,3 +114,11 @@ msgstr "Search station"
 #: src/components/Setting/OtherInfo.js:10
 msgid "Weitere Infos"
 msgstr "More infos"
+
+#: src/pages/Thing.js:78
+msgid "Zu Favoriten hinzufügen"
+msgstr "Add to favorites"
+
+#: src/pages/Thing.js:59
+msgid "Zuletzt geupdated:"
+msgstr "Last updated: "

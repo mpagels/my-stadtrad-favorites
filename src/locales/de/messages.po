@@ -49,12 +49,28 @@ msgstr ""
 #~ msgid "Englisch"
 #~ msgstr ""
 
+#: src/pages/Thing.js:68
+msgid "Fahrrad"
+msgstr ""
+
+#: src/pages/Thing.js:68
+msgid "Fahrräder"
+msgstr ""
+
+#: src/pages/Thing.js:78
+msgid "Favoriten entfernen"
+msgstr ""
+
 #: src/components/Setting/OtherInfo.js:61
 msgid "Hi 👋, ich bin Martin Pagels, begeisterter Programmierer - und neuerdings Fahradfahrer. Mit dieser kleinen App optimiere ich die StadtRAD App nach meinen Bedürfnissen. Wenn du Lust hast, connecte dich gerne mit mir."
 msgstr ""
 
 #: src/components/Setting/General.js:14
 msgid "Hinweis bei geringer Verfügbarkeit"
+msgstr ""
+
+#: src/components/AddFavorite.js:13
+msgid "Keine Favoriten gespeichert"
 msgstr ""
 
 #: src/components/Setting/OtherInfo.js:60
@@ -65,6 +81,7 @@ msgstr ""
 msgid "Mein Favorit"
 msgstr ""
 
+#: src/components/FooterNavBar/FooterNavBar.js:34
 #: src/components/Header.js:21
 msgid "Meine Favoriten"
 msgstr ""
@@ -77,10 +94,35 @@ msgstr ""
 msgid "Spracheinstellung"
 msgstr ""
 
+#: src/components/Result/Result.js:22
+#~ msgid "StadtRad-Statio"
+#~ msgstr ""
+
+#: src/components/Result/Result.js:22
+msgid "StadtRad-Station"
+msgstr ""
+
+#: src/components/Result/Result.js:31
+msgid "Station anzeigen"
+msgstr ""
+
+#: src/components/Input/Input.js:19
+msgid "Station suchen"
+msgstr ""
+
+#: src/components/FooterNavBar/FooterNavBar.js:65
 #: src/components/Header.js:31
 msgid "Stationssuche"
 msgstr ""
 
 #: src/components/Setting/OtherInfo.js:10
 msgid "Weitere Infos"
+msgstr ""
+
+#: src/pages/Thing.js:78
+msgid "Zu Favoriten hinzufügen"
+msgstr ""
+
+#: src/pages/Thing.js:59
+msgid "Zuletzt geupdated:"
 msgstr ""
