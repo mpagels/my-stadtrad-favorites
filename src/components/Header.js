@@ -4,6 +4,7 @@ import { IoArrowBackSharp, IoSettingsOutline } from 'react-icons/io5'
 import { Route, Switch, useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Trans } from '@lingui/macro'
 
 export default function Header() {
   const history = useHistory()
@@ -16,7 +17,9 @@ export default function Header() {
             <IoSettingsOutline />
           </SettingButton>
         </IconContext.Provider>
-        <HeaderWrapper>Meine Favoriten</HeaderWrapper>
+        <HeaderWrapper>
+          <Trans>Meine Favoriten</Trans>
+        </HeaderWrapper>
       </Route>
       <Route path="/search">
         <IconContext.Provider value={{ size: '2em', color: 'white' }}>
@@ -24,7 +27,9 @@ export default function Header() {
             <IoSettingsOutline />
           </SettingButton>
         </IconContext.Provider>
-        <HeaderWrapper>Stationssuche</HeaderWrapper>
+        <HeaderWrapper>
+          <Trans>Stationssuche</Trans>
+        </HeaderWrapper>
       </Route>
       <Route path="/settings">
         <IconContext.Provider value={{ size: '2em', color: 'white' }}>
@@ -32,7 +37,9 @@ export default function Header() {
             <IoArrowBackSharp />
           </BackButton>
         </IconContext.Provider>
-        <HeaderWrapper>Einstellungen</HeaderWrapper>
+        <HeaderWrapper>
+          <Trans>Einstellungen</Trans>
+        </HeaderWrapper>
       </Route>
       <Route path="/thing">
         <IconContext.Provider value={{ size: '2em', color: 'white' }}>
@@ -43,7 +50,9 @@ export default function Header() {
             <IoSettingsOutline />
           </SettingButton>
         </IconContext.Provider>
-        <HeaderWrapper>Mein Favorit</HeaderWrapper>
+        <HeaderWrapper>
+          <Trans>Mein Favorit</Trans>
+        </HeaderWrapper>
       </Route>
     </Switch>
   )
