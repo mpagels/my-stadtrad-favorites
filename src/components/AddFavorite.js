@@ -3,12 +3,15 @@ import { RiBikeLine } from 'react-icons/ri'
 import { IconContext } from 'react-icons'
 
 import styled from 'styled-components'
+import { Trans } from '@lingui/macro'
 
 export default function AddFavorite() {
   return (
     <IconContext.Provider value={{ size: '10em' }}>
       <Wrapper>
-        <Title>Keine Favoriten gespeichert</Title>
+        <Title>
+          <Trans>Keine Favoriten gespeichert</Trans>
+        </Title>
         <RiBikeLine size={'3em'} />
       </Wrapper>
     </IconContext.Provider>
