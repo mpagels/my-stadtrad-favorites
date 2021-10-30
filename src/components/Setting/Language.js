@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { useLingui } from '@lingui/react'
-import { t } from '@lingui/macro'
 
 export default function Language() {
   const { i18n } = useLingui()
