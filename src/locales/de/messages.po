@@ -21,12 +21,44 @@ msgstr ""
 msgid "Allemein"
 msgstr ""
 
+#: src/components/Setting/OtherInfo.js:14
+msgid "Das Project ist Open Source. <0/>Für mehr Informationen, Bugs und/oder Feature-Anfragen schaue auf der<1><2>GitHub Seite</2> </1>vorbei."
+msgstr ""
+
+#: src/components/Setting/OtherInfo.js:43
+msgid "Datenquelle"
+msgstr ""
+
+#: src/components/Setting/OtherInfo.js:31
+msgid "Design von:"
+msgstr ""
+
+#: src/components/Setting/Language.js:7
+#~ msgid "Deutsch"
+#~ msgstr ""
+
+#: src/components/Setting/OtherInfo.js:44
+msgid "Diese App bezieht ihre Echtzeitdaten von iot.hamburg.de <0/> Viele Informationen zur API sind auch <1><2>hier</2> </1>zu finden."
+msgstr ""
+
 #: src/components/Header.js:41
 msgid "Einstellungen"
 msgstr ""
 
+#: src/components/Setting/Language.js:8
+#~ msgid "Englisch"
+#~ msgstr ""
+
+#: src/components/Setting/OtherInfo.js:61
+msgid "Hi 👋, ich bin Martin Pagels, begeisterter Programmierer - und neuerdings Fahradfahrer. Mit dieser kleinen App optimiere ich die StadtRAD App nach meinen Bedürfnissen. Wenn du Lust hast, connecte dich gerne mit mir."
+msgstr ""
+
 #: src/components/Setting/General.js:14
 msgid "Hinweis bei geringer Verfügbarkeit"
+msgstr ""
+
+#: src/components/Setting/OtherInfo.js:60
+msgid "Kontakt"
 msgstr ""
 
 #: src/components/Header.js:54
@@ -37,10 +69,18 @@ msgstr ""
 msgid "Meine Favoriten"
 msgstr ""
 
+#: src/components/Setting/OtherInfo.js:70
+msgid "Schreib mir"
+msgstr ""
+
 #: src/components/Setting/General.js:21
 msgid "Spracheinstellung"
 msgstr ""
 
 #: src/components/Header.js:31
 msgid "Stationssuche"
+msgstr ""
+
+#: src/components/Setting/OtherInfo.js:10
+msgid "Weitere Infos"
 msgstr ""

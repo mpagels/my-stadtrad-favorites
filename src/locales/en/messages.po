@@ -21,13 +21,45 @@ msgstr "From how many bicycles should a warning (yellow number) be displayed? be
 msgid "Allemein"
 msgstr "General"
 
+#: src/components/Setting/OtherInfo.js:14
+msgid "Das Project ist Open Source. <0/>Für mehr Informationen, Bugs und/oder Feature-Anfragen schaue auf der<1><2>GitHub Seite</2> </1>vorbei."
+msgstr "The project is open source.  <0/>For more information, bugs and/or feature requests check the <1><2>GitHub</2> </1>page."
+
+#: src/components/Setting/OtherInfo.js:43
+msgid "Datenquelle"
+msgstr "Data source"
+
+#: src/components/Setting/OtherInfo.js:31
+msgid "Design von:"
+msgstr "Design by:"
+
+#: src/components/Setting/Language.js:7
+#~ msgid "Deutsch"
+#~ msgstr "German"
+
+#: src/components/Setting/OtherInfo.js:44
+msgid "Diese App bezieht ihre Echtzeitdaten von iot.hamburg.de <0/> Viele Informationen zur API sind auch <1><2>hier</2> </1>zu finden."
+msgstr "This app obtains its real-time data from iot.hamburg.de. <0/> You can also find a lot of information about the API <1><2>here</2> </1>."
+
 #: src/components/Header.js:41
 msgid "Einstellungen"
 msgstr "Settings"
 
+#: src/components/Setting/Language.js:8
+#~ msgid "Englisch"
+#~ msgstr "English"
+
+#: src/components/Setting/OtherInfo.js:61
+msgid "Hi 👋, ich bin Martin Pagels, begeisterter Programmierer - und neuerdings Fahradfahrer. Mit dieser kleinen App optimiere ich die StadtRAD App nach meinen Bedürfnissen. Wenn du Lust hast, connecte dich gerne mit mir."
+msgstr "Hi 👋, I'm Martin Pagels, a enthusiastic programmer - and recently bicycle rider. With this little app I'm optimizing the StadtRAD app according to my needs. If you like it, feel free to connect with me."
+
 #: src/components/Setting/General.js:14
 msgid "Hinweis bei geringer Verfügbarkeit"
 msgstr "Note for low availability"
+
+#: src/components/Setting/OtherInfo.js:60
+msgid "Kontakt"
+msgstr "Contact"
 
 #: src/components/Header.js:54
 msgid "Mein Favorit"
@@ -37,10 +69,18 @@ msgstr "My favorite"
 msgid "Meine Favoriten"
 msgstr "My favorites"
 
+#: src/components/Setting/OtherInfo.js:70
+msgid "Schreib mir"
+msgstr "Write me"
+
 #: src/components/Setting/General.js:21
 msgid "Spracheinstellung"
-msgstr "Language setting"
+msgstr "Language settings"
 
 #: src/components/Header.js:31
 msgid "Stationssuche"
 msgstr "Search station"
+
+#: src/components/Setting/OtherInfo.js:10
+msgid "Weitere Infos"
+msgstr "More infos"

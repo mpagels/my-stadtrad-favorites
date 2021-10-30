@@ -16,7 +16,7 @@ i18n.load({
   en: enMessages,
   de: deMessages,
 })
-i18n.activate('en')
+i18n.activate('de')
 
 ReactDOM.render(
   <React.StrictMode>
