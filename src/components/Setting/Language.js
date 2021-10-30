@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useLingui } from '@lingui/react'
-
+import { setLocaleInLocalStorage } from '../../services/localStorage'
 export default function Language() {
   const { i18n } = useLingui()
   const buttons = [
@@ -12,7 +12,7 @@ export default function Language() {
 
   function handleClick(language) {
     i18n.activate(language)
-    localStorage.setItem('stadtrad-locale', language)
+    setLocaleInLocalStorage(language)
   }
   return (
     <Wrapper>

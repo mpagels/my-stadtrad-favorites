@@ -9,10 +9,10 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { messages as enMessages } from './locales/en/messages'
 import { messages as deMessages } from './locales/de/messages'
-
+import { getLocaleFromLocalStorage } from './services/localStorage'
 const queryClient = new QueryClient()
 
-const locale = localStorage.getItem('stadtrad-locale') || 'de'
+const locale = getLocaleFromLocalStorage()
 
 i18n.load({
   en: enMessages,
