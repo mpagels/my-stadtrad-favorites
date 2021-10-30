@@ -12,6 +12,7 @@ export default function Language() {
 
   function handleClick(language) {
     i18n.activate(language)
+    localStorage.setItem('stadtrad-locale', language)
   }
   return (
     <Wrapper>

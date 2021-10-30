@@ -12,11 +12,14 @@ import { messages as deMessages } from './locales/de/messages'
 
 const queryClient = new QueryClient()
 
+const locale = localStorage.getItem('stadtrad-locale') || 'de'
+
 i18n.load({
   en: enMessages,
   de: deMessages,
 })
-i18n.activate('de')
+
+i18n.activate(locale)
 
 ReactDOM.render(
   <React.StrictMode>
