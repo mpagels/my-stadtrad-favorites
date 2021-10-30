@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { useLingui } from '@lingui/react'
+import { t } from '@lingui/macro'
 
 export default function Language() {
-  const buttons = [
-    { display: 'Deutsch', locale: 'de' },
-    { display: 'Englisch', locale: 'en' },
-  ]
-
   const { i18n } = useLingui()
+  const buttons = [
+    { display: i18n._('Deutsch'), locale: 'de' },
+    { display: i18n._('Englisch'), locale: 'en' },
+  ]
 
   const locale = i18n.locale
 
