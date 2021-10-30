@@ -43,7 +43,7 @@ export default function SearchStations({ isFavorite, toggleFavorit }) {
     const { station_description, thing_id } = location
     return (
       <Result
-        key={station_description}
+        key={thing_id}
         station_description={station_description}
         isFav={isFavorite(thing_id)}
         thing_id={thing_id}
