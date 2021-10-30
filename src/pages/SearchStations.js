@@ -69,6 +69,7 @@ const ResultWrapper = styled.div`
 const ResultList = styled.ul`
   list-style: none;
   padding: 0;
+  margin-bottom: 155px;
 `
 
 const Wrapper = styled.div`
