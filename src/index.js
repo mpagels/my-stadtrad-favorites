@@ -10,6 +10,8 @@ import { I18nProvider } from '@lingui/react'
 import { messages as enMessages } from './locales/en/messages'
 import { messages as deMessages } from './locales/de/messages'
 import { getLocaleFromLocalStorage } from './services/localStorage'
+import { ToggleContextProvider } from './contenxt/ToggleContenxt'
+
 const queryClient = new QueryClient()
 
 const locale = getLocaleFromLocalStorage()
@@ -26,9 +28,11 @@ ReactDOM.render(
     <Router>
       <QueryClientProvider client={queryClient}>
         <GlobalStyles />
-        <I18nProvider i18n={i18n}>
-          <App />
-        </I18nProvider>
+        <ToggleContextProvider>
+          <I18nProvider i18n={i18n}>
+            <App />
+          </I18nProvider>
+        </ToggleContextProvider>
       </QueryClientProvider>
     </Router>
   </React.StrictMode>,

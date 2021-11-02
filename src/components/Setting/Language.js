@@ -18,7 +18,7 @@ export default function Language() {
     <Wrapper>
       {buttons.map((button) => (
         <Button
-          key={button}
+          key={button.locale}
           onClick={() => handleClick(button.locale)}
           isActive={button.locale === locale}
         >
