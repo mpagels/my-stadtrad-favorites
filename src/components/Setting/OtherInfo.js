@@ -10,7 +10,7 @@ export default function OtherInfo() {
         <Trans>Weitere Infos</Trans>
       </SettingTitle>
       <SettingsList>
-        <SettingItem title="Source-Code">
+        <SettingItem id="source" title="Source-Code">
           <Trans>
             Das Project ist Open Source. <br />
             Für mehr Informationen, Bugs und/oder Feature-Anfragen schaue auf
@@ -40,7 +40,7 @@ export default function OtherInfo() {
             </a>{' '}
           </strong>
         </SettingItem>
-        <SettingItem title={t`Datenquelle`}>
+        <SettingItem id="data" title={t`Datenquelle`}>
           <Trans>
             Diese App bezieht ihre Echtzeitdaten von iot.hamburg.de <br /> Viele
             Informationen zur API sind auch{' '}
@@ -57,7 +57,7 @@ export default function OtherInfo() {
           </Trans>
         </SettingItem>
 
-        <SettingItem title={t`Kontakt`}>
+        <SettingItem id="contact" title={t`Kontakt`}>
           <Trans>
             {' '}
             Hi 👋, ich bin Martin Pagels, begeisterter Programmierer - und

@@ -1,21 +1,24 @@
 import styled from 'styled-components'
 import { HiOutlineChevronRight } from 'react-icons/hi'
 import { MdClose } from 'react-icons/md'
-import useToggle from '../../hooks/useToggle'
-export default function SettingItem({ title, children }) {
-  const [isOpen, toggle] = useToggle()
+import { useOpen } from '../../contenxt/ToggleContenxt'
+export default function SettingItem({ title, children, id }) {
+  const [isOpen, toggle] = useOpen(id)
 
+  function handleOnClick() {
+    toggle(id)
+  }
   return (
     <Item>
-      <Selection onClick={toggle}>
+      <Selection onClick={handleOnClick}>
         {title}
-        {!isOpen ? (
+        {!isOpen.isOpen ? (
           <HiOutlineChevronRight size="1.4em" />
         ) : (
           <MdClose size="1.4em" />
         )}
       </Selection>
-      {isOpen && <Content>{children}</Content>}
+      {isOpen.isOpen && <Content>{children}</Content>}
     </Item>
   )
 }

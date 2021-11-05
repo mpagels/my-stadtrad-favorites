@@ -11,14 +11,17 @@ export default function General() {
         <Trans>Allemein</Trans>
       </SettingTitle>
       <SettingsList>
-        <SettingItem title={t`Hinweis bei geringer Verfügbarkeit`}>
+        <SettingItem
+          id="availability"
+          title={t`Hinweis bei geringer Verfügbarkeit`}
+        >
           <Trans>
             Ab wie vielen Fahrrädern soll eine Warnung (gelbe Nummer) angezeigt
             werden?
           </Trans>
           <Availability />
         </SettingItem>
-        <SettingItem title={t`Spracheinstellung`}>
+        <SettingItem id="language" title={t`Spracheinstellung`}>
           <Language />
         </SettingItem>
       </SettingsList>
